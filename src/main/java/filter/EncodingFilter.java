@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * ServletRequest °´Ã¼¿¡ ÀÎÄÚµùÀ» ¼³Á¤ÇÏ´Â Filter Å¬·¡½º.
+ * ServletRequest ê°ì²´ì— ì¸ì½”ë”©ì„ ì„¤ì •í•˜ëŠ” Filter í´ë˜ìŠ¤.
  * 
  * @web.filter name="Encoding Filter" display-name="Encoding Filter"
  * @web.filter-init-param name="encoding" value="EUC-KR"		    
@@ -20,7 +20,7 @@ public class EncodingFilter implements Filter {
 	private String encoding = null;
 	
 	/**
-	 * ServletRequest°´Ã¼¿¡ web.xml¿¡¼­ Àü´ŞµÈ ÀÎÄÚµù ¹æ½ÄÀ» ¼³Á¤
+	 * ServletRequestê°ì²´ì— web.xmlì—ì„œ ì „ë‹¬ëœ ì¸ì½”ë”© ë°©ì‹ì„ ì„¤ì •
 	 */
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -34,7 +34,7 @@ public class EncodingFilter implements Filter {
 	}
 
 	/**
-	 * web.xml¿¡¼­ Àü´ŞµÈ ÀÎÄÚµù ¹æ½ÄÀ» ÃÊ±âÈ­
+	 * web.xmlì—ì„œ ì „ë‹¬ëœ ì¸ì½”ë”© ë°©ì‹ì„ ì´ˆê¸°í™”
 	 */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
