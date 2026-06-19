@@ -27,6 +27,17 @@ public class AdoptionAnimal {
 		this.filename = filename;
 	}
 
+	public AdoptionAnimal(String gender, int age, String health, String vaccination, String kind, String filename, int postId) {
+		super();
+		this.gender = gender;
+		this.age = age;
+		this.health = health;
+		this.vaccination = vaccination;
+		this.kind = kind;
+		this.filename = filename;
+		this.postId = postId;
+	}
+
 	public AdoptionAnimal(int petId, String gender, int age, String health, String vaccination, String kind,
 			String filename, int postId) {
 		super();
