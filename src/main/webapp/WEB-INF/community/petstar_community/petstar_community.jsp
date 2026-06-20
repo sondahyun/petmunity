@@ -36,7 +36,10 @@
 		</div>
 		<% if(session.getAttribute("loginId") != null) {%>
 			<a class="pm-btn" href="<c:url value='/community/petstar_community/add_content' />">글 작성</a>
-		<%} %>
+		
+			<% } else { %>
+				<a class="pm-btn" href="<c:url value='/user/login/form' />">글 작성</a>
+			<% } %>
 	</div>
 
 	<div class="pm-cards">

@@ -34,7 +34,10 @@
       </div>
       <% if(session.getAttribute("loginId") != null) {%>
          <a class="pm-btn" href="<c:url value='/community/group_community/add_content' />">모임 생성</a>
-      <%} %>
+      
+			<% } else { %>
+				<a class="pm-btn" href="<c:url value='/user/login/form' />">모임 생성</a>
+			<% } %>
    </div>
 
    <div class="pm-cards">

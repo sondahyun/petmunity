@@ -41,7 +41,10 @@
 		</div>
 		<% if(session.getAttribute("loginId") != null) {%>
 			<a class="pm-btn" href="<c:url value='/community/adopt_community/adopt_community/add_content' />">글쓰기</a>
-		<%} %>
+		
+			<% } else { %>
+				<a class="pm-btn" href="<c:url value='/user/login/form' />">글쓰기</a>
+			<% } %>
 	</div>
 
 	<div class="pm-cards">

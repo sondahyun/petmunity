@@ -19,7 +19,10 @@
 		<h1 class="pm-page-title">정보 커뮤니티</h1>
 		<% if(session.getAttribute("loginId") != null) {%>
 			<a class="pm-btn" href="<c:url value='/community/info_community/add_content' />">글쓰기</a>
-		<%} %>
+		
+			<% } else { %>
+				<a class="pm-btn" href="<c:url value='/user/login/form' />">글쓰기</a>
+			<% } %>
 	</div>
 
 	<table class="pm-list">
