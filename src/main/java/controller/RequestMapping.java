@@ -22,6 +22,7 @@ public class RequestMapping {
 
     	// �� uri�� �����Ǵ� controller ��ü�� ���� �� ����
         mappings.put("/", new ForwardController("/index.jsp"));
+        mappings.put("/image", new ImageController());   // 업로드 이미지 스트리밍
         mappings.put("/main/main", new MainController());
         mappings.put("/navbar", new ForwardController("/navbar.jsp"));
         

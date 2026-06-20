@@ -73,7 +73,7 @@ public class UpdateUserController implements Controller {
 
 			// 아래와 같이 하면 Tomcat 내부에 복사된 프로젝트 밑에 upload 폴더가 생성됨 
 			ServletContext context = request.getServletContext();
-			String path = context.getRealPath("/upload");
+			String path = (System.getProperty("user.home") + "/petmunity_upload");
 			File dir = new File(path);			
 
 			// Tomcat 외부의 폴더에 저장하려면 아래와 같이 절대 경로로 폴더 이름을 지정함
@@ -137,8 +137,7 @@ public class UpdateUserController implements Controller {
 							// 파일 이름이 파일의 전체 경로까지 포함하기 때문에 이름 부분만 추출해야 한다.
 							// 실제 C:\Web_Java\aaa.gif라고 하면 aaa.gif만 추출하기 위한 코드임
 
-							filename = UUID.randomUUID().toString() + "_" 
-									+ oriFilename.substring(oriFilename.lastIndexOf("\\") + 1);  
+							filename = UUID.randomUUID().toString() + (oriFilename.lastIndexOf(".") >= 0 ? oriFilename.substring(oriFilename.lastIndexOf(".")) : "");  
 							// 파일 이름이 중복되지 않도록 UUID(Universally Unique IDentifier)를 생성해서 원래의 이름 앞에 붙임
 
 
