@@ -5,18 +5,20 @@
 <head>
 <title>myPage</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 </head>
 <body>
-<%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
-   <table style="width:100%">
-      <tr>
-         <td style="width : 15%; margin:auto"><%@include file="/WEB-INF/myPage/myPage_info_mini.jsp"%>
-         </td>
-         <td style="width : 85%"><%@include file="/WEB-INF/myPage/myPage_info.jsp"%>
-         </td>
-   </table>
+<%@include file="/WEB-INF/navbar.jsp" %>
+<div class="pm-page wide">
+	<h1 class="pm-page-title">마이페이지</h1>
+	<p class="pm-page-sub">내 프로필과 반려동물 정보를 확인하세요.</p>
+	<div style="display:flex; gap:28px; align-items:flex-start; flex-wrap:wrap;">
+		<div style="flex:0 0 200px; max-width:200px;">
+			<%@include file="/WEB-INF/myPage/myPage_info_mini.jsp"%>
+		</div>
+		<div style="flex:1; min-width:280px;">
+			<%@include file="/WEB-INF/myPage/myPage_info.jsp"%>
+		</div>
+	</div>
+</div>
 </body>
-
 </html>

@@ -35,14 +35,8 @@
 	}
 </style>
 <table class="adopt_main_table">
-	<tr class="pic">
-		<td class="pic_td" colspan=2> 
-			<a><img src="<c:url value='/images/logo.png' />" style="width:150px"/> </a>
-		</td>
-	</tr>
-	
 	<%
-	if(session.getAttribute("loginId") != null) {// 입양일 경우 
+	if(session.getAttribute("loginId") != null) {// 입양일 경우
 	%>
 	<tr class="name">
 	    <td>
