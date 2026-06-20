@@ -14,8 +14,6 @@
 <head>
 <title>임보/입양 정보</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>

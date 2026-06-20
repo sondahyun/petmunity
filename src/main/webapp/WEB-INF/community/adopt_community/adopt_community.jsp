@@ -17,8 +17,6 @@
 <head>
 <meta charset="utf-8">
 <title>입양/임보 게시판 메인화면</title>
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <style>
 	.pm-cards{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 	@media(max-width:639px){ .pm-cards{ grid-template-columns:repeat(2,1fr); } }

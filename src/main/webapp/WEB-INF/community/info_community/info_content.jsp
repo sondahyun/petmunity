@@ -14,7 +14,6 @@
 <head>
 <title>정보 게시글</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/modal.css' />" type="text/css">
 <style>
 	.pm-comment-form{ display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; }
 	.pm-comment-form .pm-comment-author{ flex:0 0 110px; font-size:14px; font-weight:600; color:var(--pm-ink); padding-top:12px; }

@@ -4,8 +4,6 @@
 <head>
 <title>사용자 관리</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function userCreate() {
 	alert("나의 정보 작성완료 -> 펫 정보 작성하기");

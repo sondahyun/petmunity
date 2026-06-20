@@ -5,8 +5,6 @@
 <head>
 <title>폼 작성</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function Create() {
    /* alert("실행");
