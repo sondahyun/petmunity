@@ -39,7 +39,7 @@ String lId=UserSessionUtils.getLoginId(session);
 		<% if(p2.getFileName() == null){%>
 			<img class="pm-media" src="<c:url value='/images/linkedin_profile_image.png' />" alt="펫스타 이미지" />
 		<%} else{%>
-			<img class="pm-media" src="<c:url value='/upload/${p2.fileName}'/>" alt="펫스타 이미지" />
+			<img class="pm-media" src="<c:url value='/image?file=${p2.fileName}'/>" alt="펫스타 이미지" />
 		<%} %>
 
 		<table class="pm-detail">

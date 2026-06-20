@@ -58,7 +58,7 @@
 				<c:param name='postId' value='${item.postId}'/></c:url>">
 			<div class="pm-card-img">
 				<%if(file != null) {%>
-					<img src="<c:url value='/upload/${item.animal.filename}'/>" alt="">
+					<img src="<c:url value='/image?file=${item.animal.filename}'/>" alt="">
 				<%} else{%>
 					<img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="">
 				<%} %>

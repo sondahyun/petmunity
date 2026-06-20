@@ -75,7 +75,7 @@
    		<%if(pet!=null && pet.getFilename() == null){ %>
 			<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px"/>	
 		<%}else{ %>
-			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px" />	
+			<img src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px" />	
 		<%} %>	 
    		</td>
    	</tr>

@@ -55,7 +55,7 @@ function userList(targetUri) {
 				    	<td style="height:40%; width:15%; align:center; background-color:#E6E6E6;" >모임 대표 배경 사진</td>
 				    	<td style="width:50%">
 				    		<%if(post1.getFileName() !=null){ %>
-							<img src="<c:url value='/upload/${post1.fileName}'/>" />
+							<img src="<c:url value='/image?file=${post1.fileName}'/>" />
 							<%} %>
 							<input type="file" style="width: 60%" name="fileName" >			
 						</td>

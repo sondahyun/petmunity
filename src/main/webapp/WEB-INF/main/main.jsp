@@ -120,7 +120,7 @@
 			       if (n3 >= 5) break; n3++;
 			       String nick3 = UserSessionUtils.getUserNickName(p3.getLoginId());
 			       String f3 = (p3.getAnimal() != null) ? p3.getAnimal().getFilename() : null;
-			       String img3 = (f3 != null) ? ctx + "/upload/" + f3 : defaultImg;
+			       String img3 = (f3 != null) ? ctx + "/image?file=" + f3 : defaultImg;
 			       String href3 = ctx + "/community/adopt_community/adopt_info?postId=" + p3.getPostId();
 			%>
 				<a class="pm-card" href="<%=href3%>">
@@ -151,7 +151,7 @@
 			       if (n2 >= 5) break; n2++;
 			       String nick2 = UserSessionUtils.getUserNickName(p2.getLoginId());
 			       String f2 = p2.getFileName();
-			       String img2 = (f2 != null) ? ctx + "/upload/" + f2 : defaultImg;
+			       String img2 = (f2 != null) ? ctx + "/image?file=" + f2 : defaultImg;
 			       String href2 = ctx + "/community/petstar_community/petstar_content?postId=" + p2.getPostId();
 			%>
 				<a class="pm-card" href="<%=href2%>">
@@ -182,7 +182,7 @@
 			       if (n0 >= 5) break; n0++;
 			       String nick0 = UserSessionUtils.getUserNickName(p0.getLoginId());
 			       String f0 = p0.getFileName();
-			       String img0 = (f0 != null) ? ctx + "/upload/" + f0 : defaultImg;
+			       String img0 = (f0 != null) ? ctx + "/image?file=" + f0 : defaultImg;
 			       String href0 = ctx + "/community/info_community/info_content?postId=" + p0.getPostId();
 			%>
 				<a class="pm-card" href="<%=href0%>">

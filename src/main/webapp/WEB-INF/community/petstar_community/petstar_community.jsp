@@ -53,7 +53,7 @@
 			<a class="pm-card" href="<c:url value='/community/petstar_community/petstar_content'><c:param name='postId' value='${item.postId}'/></c:url>">
 				<div class="pm-card-img">
 					<%if(file != null) {%>
-						<img src="<c:url value='/upload/${item.fileName}'/>" alt="${item.postTitle}" />
+						<img src="<c:url value='/image?file=${item.fileName}'/>" alt="${item.postTitle}" />
 					<%} else{%>
 						<img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="${item.postTitle}" />
 					<%} %>

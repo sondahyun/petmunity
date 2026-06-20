@@ -52,7 +52,7 @@
 			<img class="pm-media" src="<c:url value='/images/linkedin_profile_image.png' />" alt="대표 이미지" />
 		<%}
 		else{%>
-			<img class="pm-media" src="<c:url value='/upload/${post.fileName}'/>" alt="${post.postTitle}" />
+			<img class="pm-media" src="<c:url value='/image?file=${post.fileName}'/>" alt="${post.postTitle}" />
 		<%} %>
 
 		<table class="pm-detail">

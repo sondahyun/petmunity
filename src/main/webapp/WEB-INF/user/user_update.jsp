@@ -216,7 +216,7 @@ function userList(targetUri) {
 			<%if(pet.getFilename() == null){ %>
 				<img class="pm-media" src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px;"/>
 			<%}else{ %>
-				<img class="pm-media" src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px;" />
+				<img class="pm-media" src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px;" />
 			<%} %>
 			<input type="file" class="pm-input" name="filename">
 		</div>

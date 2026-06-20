@@ -57,7 +57,7 @@ function userList(targetUri) {
 			    	<td style="width:50%">
 				<!-- <a href="<c:url value='/main/main' />"> -->
 					<%if(post0.getFileName() !=null){ %>
-						<img src="<c:url value='/upload/${post0.fileName}'/>" />
+						<img src="<c:url value='/image?file=${post0.fileName}'/>" />
 					<%} %>
 					<input type="file" style="width: 60%" name="fileName" >			
 					</td>

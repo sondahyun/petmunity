@@ -49,7 +49,7 @@
          <a class="pm-card" href="<c:url value='/community/group_community/group_content'><c:param name='postId' value='${item.postId}'/></c:url>">
             <div class="pm-card-img">
                <%if(file != null) {%>
-                  <img src="<c:url value='/upload/${item.fileName}'/>" alt="모임 대표 이미지" />
+                  <img src="<c:url value='/image?file=${item.fileName}'/>" alt="모임 대표 이미지" />
                <%} else{%>
                   <img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="모임 대표 이미지" />
                <%} %>

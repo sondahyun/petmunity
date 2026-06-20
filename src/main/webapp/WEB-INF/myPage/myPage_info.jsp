@@ -71,7 +71,7 @@ function userList(targetUri) {
 		<%if(pet!=null && pet.getFilename() == null){ %>
 			<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px; border-radius:14px;"/>
 		<%}else{ %>
-			<img src="<c:url value='/upload/${pet.filename}'/>" style="width:200px; height:200px; border-radius:14px;" />
+			<img src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px; border-radius:14px;" />
 		<%} %>
 	</div>
 

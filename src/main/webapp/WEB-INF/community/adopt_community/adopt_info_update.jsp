@@ -102,7 +102,7 @@ function adoptUpdate() {
 					style="width: 500px; height: 500px" />
 				<%} 
 				else{%>
-					<img src="<c:url value='/upload/${p2.fileName}'/>"
+					<img src="<c:url value='/image?file=${p2.fileName}'/>"
 					style="width: 500px; height: 500px" />
 				<%} %>
 			<input type="file" style="width: 60%" name="filename" >
