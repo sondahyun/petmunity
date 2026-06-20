@@ -4,8 +4,6 @@
 <head>
 <title>게시글 작성</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function applyAdopt() {
    alert("실행");
@@ -40,64 +38,44 @@ function userList(targetUri) {
 
 </script>
 </head>
-<body>   
-<%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
-<!-- registration form  -->
+<body>
+<%@include file="/WEB-INF/navbar.jsp" %>
+<div class="pm-page narrow">
+   <h1 class="pm-page-title">모임 생성</h1>
+   <p class="pm-page-sub">함께할 반려인을 모을 새 모임을 만들어 보세요.</p>
 
-<!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/community/group_community/add_content' />" enctype="multipart/form-data">
-   
-   <!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-         <c:if test="${registerFailed}">
-         <font color="red"><c:out value="${exception.getMessage()}" /></font>
-       </c:if>  
-<table>
-<tr>
-<td>
-<br>
-<h3>모임 생성</h3><br>
-   <table style="background-color: #848484" style="width: 100%">
-    <!--<center>-->
-    <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">모임명</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240;" name="postTitle">
-      </td>
-    </tr>
-    <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">모임 설명</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="postContent">
-      </td>
-     </tr> 
-     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">모임 목적</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="groupPurpose">
-      </td>
-     </tr> 
-     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">지역</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="text" style="width: 240" name="region">
-      </td>
-     </tr> 
-     <tr height="40">
-      <td width="150" align="center" bgcolor="#E6E6E6">모임 대표 배경 사진</td>
-      <td width="250" bgcolor="ffffff" style="padding-left: 10">
-         <input type="file" style="width: 240" name="fileName">
-      </td>
-     </tr> 
-    </table>
-    <br>
-    </td>
- </tr>
- <tr>
- 	<td>
- 		<input class="btn" type="button" value="모임 생성완료" onClick="applyAdopt()"> &nbsp;
-	</td>
- </tr>
-</table>
-</form>
+   <form name="form" method="POST" action="<c:url value='/community/group_community/add_content' />" enctype="multipart/form-data" class="pm-form">
+
+      <!-- 등록 실패 시 exception 객체에 저장된 오류 메시지를 출력 -->
+      <c:if test="${registerFailed}">
+         <p class="pm-note" style="color:#d70015"><c:out value="${exception.getMessage()}" /></p>
+      </c:if>
+
+      <div class="pm-field">
+         <label class="pm-label">모임명</label>
+         <input type="text" name="postTitle" class="pm-input" placeholder="모임명을 입력하세요.">
+      </div>
+      <div class="pm-field">
+         <label class="pm-label">모임 설명</label>
+         <input type="text" name="postContent" class="pm-input" placeholder="모임 설명을 입력하세요.">
+      </div>
+      <div class="pm-field">
+         <label class="pm-label">모임 목적</label>
+         <input type="text" name="groupPurpose" class="pm-input" placeholder="모임 목적을 입력하세요.">
+      </div>
+      <div class="pm-field">
+         <label class="pm-label">지역</label>
+         <input type="text" name="region" class="pm-input" placeholder="지역을 입력하세요.">
+      </div>
+      <div class="pm-field">
+         <label class="pm-label">모임 대표 배경 사진</label>
+         <input type="file" name="fileName" class="pm-input">
+      </div>
+
+      <div class="pm-actions">
+         <input class="pm-btn" type="button" value="모임 생성완료" onClick="applyAdopt()">
+      </div>
+   </form>
+</div>
 </body>
 </html>
