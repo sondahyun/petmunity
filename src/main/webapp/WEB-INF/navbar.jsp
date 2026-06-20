@@ -102,7 +102,7 @@
 
 	/* 콘텐츠 카드(상세 본문 등) */
 	.pm-panel{ background:#fff; border:1px solid var(--pm-hair); border-radius:16px; padding:26px; }
-	.pm-media{ width:100%; max-width:520px; max-height:560px; object-fit:contain; border-radius:14px; display:block; margin:0 auto 22px; }
+	.pm-media{ max-width:520px; max-height:520px; width:auto; height:auto; border-radius:14px; display:block; margin:0 auto 22px; }
 </style>
 <nav class="pm-nav">
 	<div class="pm-nav-inner">
