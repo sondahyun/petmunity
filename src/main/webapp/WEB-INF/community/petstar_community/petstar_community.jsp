@@ -5,7 +5,7 @@
 <%
 	@SuppressWarnings("unchecked")
 	ArrayList<PostPetstargram> p2List = (ArrayList<PostPetstargram>)request.getAttribute("p2List");
-	Collections.sort(p2List); 
+	Collections.sort(p2List);
 	System.out.println(p2List.size());
 %>
 
@@ -14,127 +14,58 @@
 <head>
 <meta charset="utf-8">
 <title>펫스타그램 커뮤니티</title>
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css"> 
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
-</head>
 <style>
-	@font-face {
-		font-family: 'Y_Spotlight';
-	    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-	}
-	.petstar_main_table1{
-		border : none;
-	  	border-collapse : collapse;
-	  	border-radius : 10px;
-	    margin:auto;
-	    float:center;
-	    text-align:center;
-	    width:200px;
-	    height: 250px;
-	    font-family: 'Y_Spotlight';
-		src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/Y_Spotlight.woff') format('woff');
-		font-weight: normal;
-		font-style: normal; 
-		font-size: 12pt; 
-		color: Black; 
-		background-color: #e8e8e8;
-		line-height: 22px;
-		table-layout: fixed;
-	}
-	.pic2{
-		/* border : 1px solid black;
-	  	border-collapse : collapse; */
-	  	float:center;
-		width:300px;
-		height:150px;
-	}
-	.pic_td2, .content_writer1, .content_say1 {
-		/* border : 1px solid black;
-	  	border-collapse : collapse; */
-	  	width:50px;
-	  	float:center;
-	  	height:20px;
-	}
-	.pic_td2, .content_writer2, .content_say2 {
-		/* border : 1px solid black;
-	  	border-collapse : collapse; */
-	  	width:140px;
-		height:20px;
-		float:center;
-		text-align:center;
-  	}
-  	.content_say2 {
-  		display : block;
-		text-overflow: ellipsis;
-		white-space: nowrap; 
-		overflow : hidden;
-		width: 50%;
-  	}
+	.pm-cards{ display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:22px; }
+	.pm-card{ display:block; background:#fff; border:1px solid var(--pm-hair); border-radius:16px; overflow:hidden; text-decoration:none; color:var(--pm-ink); transition:transform .15s ease, box-shadow .2s ease; }
+	.pm-card:hover{ transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+	.pm-card-img{ width:100%; aspect-ratio:1/1; overflow:hidden; background:var(--pm-parch); }
+	.pm-card-img img{ width:100%; height:100%; object-fit:cover; display:block; }
+	.pm-card-body{ padding:14px 16px 18px; }
+	.pm-card-title{ font-size:16px; font-weight:600; letter-spacing:-0.01em; margin:0 0 6px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+	.pm-card-meta{ font-size:13px; color:var(--pm-muted); }
+	.pm-empty{ color:var(--pm-muted); font-size:15px; padding:40px 0; text-align:center; }
 </style>
+</head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<br>
-<table style="width:100%">
-	<% if(session.getAttribute("loginId") != null) {%>
-	<tr>
-		<td colspan="3">
-			<a style="float:right" href="<c:url value='/community/petstar_community/add_content' />">폼 작성</a>
-		</td>
-	</tr>
-	<%} %>
-	<tr>
-		<td class="myPage_mini">
-			<%@include file="/WEB-INF/myPage/myPage_include.jsp" %>
-		</td>
-		
-		<td class="main">
-			<table>
-				<% int index = 0; %>
-				<c:forEach var="item" varStatus="i" items="${p2List}">
-				<%
-					String findUser = p2List.get(index).getLoginId();	
-					String file = p2List.get(index).getFileName();									
-				%>
-				<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
-				<c:if test="${i.index%3==0}"><tr></c:if>
-				<td>
-					<table class="petstar_main_table1">
-						<tr></tr>
-						<tr class="pic2">
-							<td class="pic_td2" colspan=2>
-							<%if(file != null) {%>
-								<a href="<c:url value='/community/petstar_community/petstar_content'>
-										<c:param name='postId' value='${item.postId}'/></c:url>">  
-										<img src="<c:url value='/upload/${item.fileName}'/>" style="width:200px; height:200px" />		
-								</a>	
-							<%} else{%>
-								<a href="<c:url value='/community/petstar_community/petstar_content'>
-	                              <c:param name='postId' value='${item.postId}'/></c:url>"> 					
-	                              <img src="<c:url value='/images/linkedin_profile_image.png'/>" style="width:200px; height:200px" />		
-							 	</a>
-						 <%} %>
-							</td>
-						</tr>
-						<tr class="content_writer">
-							<td class="content_writer1">작성자</td>
-							<td class="content_writer2">${userName}</td> <!-- 작성자 나타내기 -->
-						</tr>
-						<tr class="content_say">
-							<td class="content_say1">글</td>
-							<td class="content_say2">${item.postTitle}</td> <!-- 게시글 불러오기 -->
-						</tr>
-					</table>
-				</td>
-					<c:if test="${i.index%3==2 and i.index!=0}"></tr></c:if>
-					<%index++; %>
-				</c:forEach>
-			</table>
-		</td>
-	</tr>
-</table>
-<!-- 테이블 종료 -->
+<div class="pm-page wide">
+	<div class="pm-toolbar">
+		<div>
+			<h1 class="pm-page-title">펫스타그램</h1>
+			<p class="pm-page-sub">반려동물의 일상을 사진으로 공유해요.</p>
+		</div>
+		<% if(session.getAttribute("loginId") != null) {%>
+			<a class="pm-btn" href="<c:url value='/community/petstar_community/add_content' />">글 작성</a>
+		<%} %>
+	</div>
 
+	<div class="pm-cards">
+		<% int index = 0; %>
+		<c:forEach var="item" varStatus="i" items="${p2List}">
+			<%
+				String findUser = p2List.get(index).getLoginId();
+				String file = p2List.get(index).getFileName();
+			%>
+			<c:set var="userName" value="<%=UserSessionUtils.getUserNickName(findUser) %>"/>
+			<a class="pm-card" href="<c:url value='/community/petstar_community/petstar_content'><c:param name='postId' value='${item.postId}'/></c:url>">
+				<div class="pm-card-img">
+					<%if(file != null) {%>
+						<img src="<c:url value='/upload/${item.fileName}'/>" alt="${item.postTitle}" />
+					<%} else{%>
+						<img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="${item.postTitle}" />
+					<%} %>
+				</div>
+				<div class="pm-card-body">
+					<div class="pm-card-title">${item.postTitle}</div>
+					<div class="pm-card-meta">${userName}</div>
+				</div>
+			</a>
+			<%index++; %>
+		</c:forEach>
+	</div>
+	<c:if test="${empty p2List}">
+		<p class="pm-empty">아직 등록된 펫스타그램 게시글이 없습니다.</p>
+	</c:if>
+</div>
 </body>
 </html>

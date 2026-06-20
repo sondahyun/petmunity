@@ -4,8 +4,6 @@
 <head>
 <title>게시글 작성</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function Create() {
    //alert("실행");
@@ -15,7 +13,7 @@ function Create() {
       form.userNickname.focus();
       return false;
    } */
-   
+
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
    if(emailExp.test(form.email.value)==false) {
@@ -41,55 +39,33 @@ function userList(targetUri) {
 
 </script>
 </head>
-<body>   
-<%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
-<!-- registration form  -->
+<body>
+<%@include file="/WEB-INF/navbar.jsp" %>
+<div class="pm-page narrow">
+	<h1 class="pm-page-title">펫스타그램 글 작성</h1>
+	<p class="pm-page-sub">반려동물의 사진과 이야기를 남겨보세요.</p>
 
-<!--<h2>회원가입</h2>  -->
-<br>
-<h3>폼 작성</h3>
-<form name="form" method="post" action="<c:url value='/community/petstar_community/add_content'/>" enctype="multipart/form-data">
-  <table style="background-color: ffffff" style="width: 100%">
-    <!--<center>-->
-    <tr>
-		<td>
-		<br><br>
-		   <table style="background-color: #848484" style="width: 100%">
-		    <!--<center>-->
-		    <tr height="40">
-		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">제목</td>
-		      <td style="width: 100%" bgcolor="ffffff" >
-		         <input type="text" style="width: 100%; height:30px" name="postTitle">
-		      </td>
-		    </tr>
-		    <tr height="40">
-		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">사진</td>
-		      <td style="width: 100%" bgcolor="ffffff" >
-		         <input type="file" style="width: 240" name="fileName">
-		      </td>
-		     </tr>
-		     <tr height="40">
-		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">내용</td>
-		      <td style="width: 100%" bgcolor="ffffff" >
-		         <textarea style="width: 100%; height:80px" name="postContent"></textarea>
-		      </td>
-		    </tr> 
-		    <tr height="40">
-		      <td style="width: 20%" align="center" bgcolor="#E6E6E6">종</td>
-		      <td style="width: 100%" bgcolor="ffffff">
-		         <input type="text" style="width: 100%; height:30px" name="kind">
-		      </td>
-		    </tr>
-		    </table>
-	    <br>
-	    </td>
-	 </tr>
-	 <tr>
-	 	<td><br>
-	 		<input class="btn" type="button" value="폼 작성완료" onClick="Create()"> &nbsp;
-		</td>
-	 </tr>
-	</table>
-</form>
+	<form name="form" class="pm-form" method="post" action="<c:url value='/community/petstar_community/add_content'/>" enctype="multipart/form-data">
+		<div class="pm-field">
+			<label class="pm-label" for="postTitle">제목</label>
+			<input class="pm-input" type="text" id="postTitle" name="postTitle">
+		</div>
+		<div class="pm-field">
+			<label class="pm-label" for="fileName">사진</label>
+			<input class="pm-input" type="file" id="fileName" name="fileName">
+		</div>
+		<div class="pm-field">
+			<label class="pm-label" for="postContent">내용</label>
+			<textarea class="pm-textarea" id="postContent" name="postContent"></textarea>
+		</div>
+		<div class="pm-field">
+			<label class="pm-label" for="kind">종</label>
+			<input class="pm-input" type="text" id="kind" name="kind">
+		</div>
+		<div class="pm-actions">
+			<input class="pm-btn" type="button" value="작성 완료" onClick="Create()">
+		</div>
+	</form>
+</div>
 </body>
 </html>
