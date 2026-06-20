@@ -12,35 +12,35 @@ function userCreate() {
 		alert("펫 이름을 입력하십시오.");
 		form.name.focus();
 		return false;
-	} 
+	}
 	if (form.age.value == "") {
 		alert("펫 나이를 입력하십시오.");
 		form.age.focus();
 		return false;
-	}	
+	}
 	if (form.kind.value == "") {
 		alert("펫 종을 입력하십시오.");
 		form.kind.focus();
 		return false;
-	} 
+	}
 	if (form.gender.value == "") {
 		alert("펫 성별을 입력하십시오.");
 		form.gender.focus();
 		return false;
-	} 
+	}
 	if (form.vaccination.value == "") {
 		alert("백신 접종 여부를 입력하십시오.");
 		form.vaccination.focus();
 		return false;
-	} 
+	}
 	if (form.health.value == "") {
 		alert("펫 건강상태를 입력하십시오.");
 		form.health.focus();
 		return false;
 	}
-	
+
 	alert("회원가입 완료");
-	
+
 	form.submit();
 }
 
@@ -52,72 +52,57 @@ function userList(targetUri) {
 
 </script>
 </head>
-<body>	
+<body>
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <!-- registration form  -->
 
-<!--<h2>회원가입</h2>  -->
+<div class="pm-page narrow">
+	<h1 class="pm-page-title">회원가입</h1>
+	<p class="pm-page-sub">2단계 · 펫의 정보 (없으면 건너뛸 수 있어요)</p>
 
-<form name="form" method="POST" action="<c:url value='/user/register_pet' />" enctype="multipart/form-data">
-	<h3>펫의 정보</h3>
-	<h4>없으면 pass 가능</h4>
-	<table style="background-color: #848484; width: 100%">
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">이름</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="name" >
-				 	<c:if test="${registerFailed}">value="${pet.name}"</c:if>
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">나이</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="age" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">종</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="kind" placeholder="종">
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">성별</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="radio" name="gender" value="female"/> 여성
-			<input type="radio" name="gender" value="male"/> 남성
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">예방접종 여부</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="vaccination" placeholder="ex) 어떤 예방 접종을 몇 차까지 맞았는지">
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">건강상태</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="text" style="width: 240" name="health" placeholder="건강상태">
-		</td>
-	 </tr>
-	 <tr height="40">
-		<td align="center" bgcolor="#E6E6E6">첨부파일(프로필 사진)</td>
-		<td bgcolor="ffffff" style="padding-left: 10">
-			<input type="file" style="width: 240" name="filename">
-			<input class="file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1">
-		</td>
-	 </tr>
-	</table>
-	<table>
-	 <tr align="center">
-		<td align="left">
-		<input class="btn" type="button" value="회원 가입" onClick="userCreate()"> &nbsp;
-		<input class="btn" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
-		<input class="btn" type="button" value="펫 정보 기입 안하기" onClick="userList('<c:url value='/user/login' />')">
-		</td>
-	 </tr>
-	 
-	</table>
-</form>
+	<form name="form" method="POST" action="<c:url value='/user/register_pet' />" enctype="multipart/form-data">
+		<div class="pm-form">
+			<div class="pm-field">
+				<label class="pm-label" for="name">이름</label>
+				<input class="pm-input" type="text" id="name" name="name"
+					<c:if test="${registerFailed}">value="${pet.name}"</c:if>>
+			</div>
+			<div class="pm-field">
+				<label class="pm-label" for="age">나이</label>
+				<input class="pm-input" type="text" id="age" name="age" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+			</div>
+			<div class="pm-field">
+				<label class="pm-label" for="kind">종</label>
+				<input class="pm-input" type="text" id="kind" name="kind" placeholder="종">
+			</div>
+			<div class="pm-field">
+				<span class="pm-label">성별</span>
+				<div class="pm-radios">
+					<label><input type="radio" name="gender" value="female"/> 여성</label>
+					<label><input type="radio" name="gender" value="male"/> 남성</label>
+				</div>
+			</div>
+			<div class="pm-field">
+				<label class="pm-label" for="vaccination">예방접종 여부</label>
+				<input class="pm-input" type="text" id="vaccination" name="vaccination" placeholder="ex) 어떤 예방 접종을 몇 차까지 맞았는지">
+			</div>
+			<div class="pm-field">
+				<label class="pm-label" for="health">건강상태</label>
+				<input class="pm-input" type="text" id="health" name="health" placeholder="건강상태">
+			</div>
+			<div class="pm-field">
+				<label class="pm-label" for="filename">첨부파일 (프로필 사진)</label>
+				<input class="pm-input" type="file" id="filename" name="filename">
+				<input class="pm-input file_fake" type="text" placeholder="* 10MB 미만의 jpg, png, bmp, gif만 첨부 가능" readonly tabindex="-1">
+			</div>
+
+			<div class="pm-actions">
+				<input class="pm-btn" type="button" value="회원 가입" onClick="userCreate()">
+				<input class="pm-btn-line" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
+				<input class="pm-btn-line" type="button" value="펫 정보 기입 안하기" onClick="userList('<c:url value='/user/login' />')">
+			</div>
+		</div>
+	</form>
+</div>
 </body>
 </html>
