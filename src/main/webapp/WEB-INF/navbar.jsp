@@ -60,6 +60,7 @@
 	/* ===== 공용 페이지 컴포넌트 (내부 페이지 공통) ===== */
 	.pm-page{ max-width:920px; margin:0 auto; padding:40px 22px 72px; }
 	.pm-page.narrow{ max-width:520px; }
+	.pm-page.form{ max-width:860px; }
 	.pm-page.wide{ max-width:1040px; }
 	.pm-page-title{ font-size:28px; font-weight:700; letter-spacing:-0.015em; margin:0 0 6px; color:var(--pm-ink); }
 	.pm-page-sub{ font-size:15px; color:var(--pm-muted); margin:0 0 28px; }

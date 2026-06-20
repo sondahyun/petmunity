@@ -41,7 +41,7 @@ function userList(targetUri) {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="pm-page narrow">
+<div class="pm-page form">
 	<h1 class="pm-page-title">펫스타그램 글 작성</h1>
 	<p class="pm-page-sub">반려동물의 사진과 이야기를 남겨보세요.</p>
 

@@ -34,7 +34,7 @@ function userList(targetUri) {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="pm-page narrow">
+<div class="pm-page form">
 	<h1 class="pm-page-title">쪽지쓰기</h1>
 	<p class="pm-page-sub">받는 사람에게 쪽지를 보냅니다.</p>
 

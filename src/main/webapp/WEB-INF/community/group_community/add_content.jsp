@@ -40,7 +40,7 @@ function userList(targetUri) {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="pm-page narrow">
+<div class="pm-page form">
    <h1 class="pm-page-title">모임 생성</h1>
    <p class="pm-page-sub">함께할 반려인을 모을 새 모임을 만들어 보세요.</p>
 

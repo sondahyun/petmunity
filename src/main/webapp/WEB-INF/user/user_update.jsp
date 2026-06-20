@@ -55,7 +55,7 @@ function userList(targetUri) {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="pm-page narrow">
+<div class="pm-page form">
 	<h1 class="pm-page-title">회원 정보 수정</h1>
 	<p class="pm-page-sub">나의 정보와 반려동물 정보를 수정할 수 있습니다.</p>
 

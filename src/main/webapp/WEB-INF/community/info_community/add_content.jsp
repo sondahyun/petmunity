@@ -50,7 +50,7 @@ function userList(targetUri) {
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 
-<div class="pm-page narrow">
+<div class="pm-page form">
 	<h1 class="pm-page-title">폼 작성</h1>
 	<p class="pm-page-sub">정보 커뮤니티에 글을 작성합니다.</p>
 

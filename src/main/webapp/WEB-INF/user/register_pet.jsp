@@ -54,7 +54,7 @@ function userList(targetUri) {
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
 <!-- registration form  -->
 
-<div class="pm-page narrow">
+<div class="pm-page form">
 	<h1 class="pm-page-title">회원가입</h1>
 	<p class="pm-page-sub">2단계 · 펫의 정보 (없으면 건너뛸 수 있어요)</p>
 
@@ -96,8 +96,8 @@ function userList(targetUri) {
 
 			<div class="pm-actions">
 				<input class="pm-btn" type="button" value="회원 가입" onClick="userCreate()">
-				<input class="pm-btn-line" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')">
 				<input class="pm-btn-line" type="button" value="펫 정보 기입 안하기" onClick="userList('<c:url value='/user/login' />')">
+				<input class="pm-btn-line" type="button" value="로그인 창으로 돌아가기" onClick="userList('<c:url value='/user/login' />')" style="margin-left:auto;">
 			</div>
 		</div>
 	</form>

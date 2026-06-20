@@ -42,7 +42,7 @@ function userList(targetUri) {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="pm-page narrow">
+<div class="pm-page form">
 	<h1 class="pm-page-title">폼 작성</h1>
 	<p class="pm-page-sub">입양·임보 글을 등록합니다.</p>
 
