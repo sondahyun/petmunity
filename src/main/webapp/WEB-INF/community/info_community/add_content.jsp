@@ -1,11 +1,11 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <title>폼 작성</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<link rel=stylesheet href="<c:url value='/css/user.css' />" type="text/css">
-<link rel=stylesheet href="<c:url value='/css/btn.css' />" type="text/css">
 <script>
 function applyInfo() {
    alert("실행");
@@ -15,13 +15,13 @@ function applyInfo() {
       form.postTitle.focus();
       return false;
    }
-   
+
    if (form.postContent.value == "") {
 	      alert("내용을 입력하십시오.");
 	      form.postContent.focus();
 	      return false;
 	}
-   
+
    //프론트팀 전달
    /* var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;   //""
    if(emailExp.test(form.email.value)==false) {
@@ -47,59 +47,43 @@ function userList(targetUri) {
 
 </script>
 </head>
-<body>   
+<body>
 <%@include file="/WEB-INF/navbar.jsp" %><!-- 화면 로드 시 서버로부터 커뮤니티 목록을 가져와 commSelect 메뉴 생성 -->
-<!-- registration form  -->
 
-<!--<h2>회원가입</h2>  -->
-<form name="form" method="POST" action="<c:url value='/community/info_community/add_content' />" enctype="multipart/form-data">
-   
-   <!-- 게시글 작성이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
-       <c:if test="${registerFailed}">
-         <font color="red"><c:out value="${exception.getMessage()}" /></font>
-       </c:if>  
-<table style="width: 100%">
-<tr>
-<td>
-<br>
-<h3>폼 작성</h3>
-<br><br>
-   <table style="background-color: #848484" style="width: 100%">
-    <!--<center>-->
-    <tr height="40">
-      <td style="width: 20%" align="center" bgcolor="#E6E6E6">제목</td>
-      <td style="width: 100%" bgcolor="ffffff" >
-         <input type="text" style="width: 100%; height:30px" name="postTitle">
-      </td>
-    </tr>
-    <tr height="40">
-      <td style="width: 20%" align="center" bgcolor="#E6E6E6">사진</td>
-      <td style="width: 100%" bgcolor="ffffff" >
-         <input type="file" style="width: 240" name="fileName">
-      </td>
-     </tr>
-     <tr height="40">
-      <td style="width: 20%" align="center" bgcolor="#E6E6E6">내용</td>
-      <td style="width: 100%" bgcolor="ffffff" >
-         <textarea style="width: 100%; height:80px" name="postContent"></textarea>
-      </td>
-    </tr> 
-    <tr height="40">
-      <td style="width: 20%" align="center" bgcolor="#E6E6E6">종</td>
-      <td style="width: 100%" bgcolor="ffffff">
-         <input type="text" style="width: 100%; height:30px" name="kind">
-      </td>
-    </tr>
-    </table>
-    <br>
-    </td>
- </tr>
- <tr>
- 	<td><br>
- 		<input class="btn" type="button" value="폼 작성완료" onClick="applyInfo()"> &nbsp;
-	</td>
- </tr>
-</table>
-</form>
+<div class="pm-page narrow">
+	<h1 class="pm-page-title">폼 작성</h1>
+	<p class="pm-page-sub">정보 커뮤니티에 글을 작성합니다.</p>
+
+	<c:if test="${registerFailed}">
+		<p class="pm-note" style="color:#d70015;"><c:out value="${exception.getMessage()}" /></p>
+	</c:if>
+
+	<form name="form" class="pm-form" method="POST" action="<c:url value='/community/info_community/add_content' />" enctype="multipart/form-data">
+
+		<div class="pm-field">
+			<label class="pm-label">제목</label>
+			<input class="pm-input" type="text" name="postTitle">
+		</div>
+
+		<div class="pm-field">
+			<label class="pm-label">사진</label>
+			<input class="pm-input" type="file" name="fileName">
+		</div>
+
+		<div class="pm-field">
+			<label class="pm-label">내용</label>
+			<textarea class="pm-textarea" name="postContent"></textarea>
+		</div>
+
+		<div class="pm-field">
+			<label class="pm-label">종</label>
+			<input class="pm-input" type="text" name="kind">
+		</div>
+
+		<div class="pm-actions">
+			<input class="pm-btn" type="button" value="폼 작성완료" onClick="applyInfo()">
+		</div>
+	</form>
+</div>
 </body>
 </html>
