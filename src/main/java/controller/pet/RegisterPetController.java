@@ -117,8 +117,7 @@ public class RegisterPetController implements Controller {
 
 							System.out.println("uploaded file: " + filename);
 
-							File file = new File(dir, filename);
-							item.write(file);
+							util.StorageUtil.save(filename, item.getInputStream(), item.getSize(), item.getContentType());
 							// 파일을 upload 경로에 실제로 저장한다.
 							// FileItem 객체로부터 바로 출력 저장할 수 있다.
 						}

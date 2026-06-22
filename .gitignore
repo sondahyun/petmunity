@@ -1,1 +1,4 @@
 /target/
+
+# AWS 자격증명 (절대 커밋 금지)
+src/main/resources/aws.properties

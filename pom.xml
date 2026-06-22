@@ -88,6 +88,13 @@
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+
+		<!-- AWS S3 (이미지 업로드 저장) -->
+		<dependency>
+			<groupId>com.amazonaws</groupId>
+			<artifactId>aws-java-sdk-s3</artifactId>
+			<version>1.12.470</version>
+		</dependency>
   </dependencies>
 
   <build>

@@ -1,18 +1,15 @@
 package controller;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import util.StorageUtil;
+
 /**
- * 업로드된 이미지를 앱이 직접 읽어 스트리밍한다.
- * Tomcat 기본 정적 서빙은 런타임에 업로드된 파일을 즉시 인식하지 못해
- * 방금 올린 이미지가 잠시 404가 되는 문제가 있어, 이를 우회한다.
+ * 업로드된 이미지를 스트리밍한다. StorageUtil이 S3 또는 로컬에서 읽어온다.
  * 요청: /image?file=<UUID.ext>
  */
 public class ImageController implements Controller {
@@ -21,31 +18,27 @@ public class ImageController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String file = request.getParameter("file");
 
-        // 경로 조작 방지: 파일명만 허용 (디렉터리 구분자/상위 경로 금지)
+        // 경로 조작 방지: 파일명만 허용
         if (file == null || file.isEmpty()
                 || file.contains("..") || file.contains("/") || file.contains("\\")) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return null;
         }
 
-        ServletContext context = request.getServletContext();
-        File target = new File((System.getProperty("user.home") + "/petmunity_upload"), file);
-        if (!target.exists() || !target.isFile()) {
+        InputStream in = StorageUtil.read(file);
+        if (in == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
             return null;
         }
 
         response.setContentType(contentType(file));
-        response.setContentLengthLong(target.length());
-
-        try (InputStream in = new FileInputStream(target);
-             OutputStream out = response.getOutputStream()) {
+        try (InputStream input = in; OutputStream out = response.getOutputStream()) {
             byte[] buf = new byte[8192];
             int n;
-            while ((n = in.read(buf)) != -1) out.write(buf, 0, n);
+            while ((n = input.read(buf)) != -1) out.write(buf, 0, n);
             out.flush();
         }
-        return null;   // 응답을 직접 처리했으므로 forward/redirect 없음
+        return null;
     }
 
     private String contentType(String name) {

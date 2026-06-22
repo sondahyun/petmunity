@@ -1,0 +1,10 @@
+# AWS S3 설정 예시.
+# 이 파일을 같은 폴더에 'aws.properties' 로 복사한 뒤 실제 값으로 채우세요.
+# (aws.properties 는 .gitignore 되어 커밋되지 않습니다. 키를 절대 깃에 올리지 마세요.)
+#
+# 모든 값이 채워지면 S3 저장, 비어있거나 YOUR_* 이면 자동으로 로컬(~/petmunity_upload) 저장으로 동작합니다.
+
+aws.s3.bucket=YOUR_BUCKET_NAME
+aws.s3.region=ap-northeast-2
+aws.accessKeyId=YOUR_ACCESS_KEY_ID
+aws.secretAccessKey=YOUR_SECRET_ACCESS_KEY
