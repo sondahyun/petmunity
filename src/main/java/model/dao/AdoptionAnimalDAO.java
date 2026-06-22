@@ -33,6 +33,38 @@ public class AdoptionAnimalDAO {
 		return 0;
 	}
 
+	public int update(AdoptionAnimal animal) throws SQLException {
+		String sql = "UPDATE AdoptionAnimal SET gender=?, age=?, health=?, vaccination=?, kind=? WHERE petId=?";
+		Object[] param = new Object[] { animal.getGender(), animal.getAge(), animal.getHealth(), animal.getVaccination(), animal.getKind(), animal.getPetId() };
+		jdbcUtil.setSqlAndParameters(sql, param);
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
+	public int updateWithFile(AdoptionAnimal animal) throws SQLException {
+		String sql = "UPDATE AdoptionAnimal SET gender=?, age=?, health=?, vaccination=?, kind=?, fileName=? WHERE petId=?";
+		Object[] param = new Object[] { animal.getGender(), animal.getAge(), animal.getHealth(), animal.getVaccination(), animal.getKind(), animal.getFilename(), animal.getPetId() };
+		jdbcUtil.setSqlAndParameters(sql, param);
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	/*
 	public int update(AdoptionAnimal pet) throws SQLException {
 		String sql = "UPDATE Pet "

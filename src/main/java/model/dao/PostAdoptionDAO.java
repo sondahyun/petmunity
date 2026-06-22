@@ -53,8 +53,8 @@ public class PostAdoptionDAO {
     */
    public int update(PostAdoption post) throws SQLException {
       String sql = "UPDATE PostAdoption "
-            + "SET postTitle=?, postDate=SYSDATE, postcontent=?, loginId=?, animal=? " + "WHERE postId=?";
-      Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getLoginId(), post.getAnimal(), post.getPostId() };
+            + "SET postTitle=?, postContent=? " + "WHERE postId=?";
+      Object[] param = new Object[] { post.getPostTitle(), post.getPostContent(), post.getPostId() };
       jdbcUtil.setSqlAndParameters(sql, param); // // JDBCUtil에 update문과 매개 변수 설정
 
       try {

@@ -39,6 +39,7 @@ public class UserManager {
 			postPetstargramDAO = new PostPetstargramDAO();
 			commentP2DAO = new CommentP2DAO();
 			postAdoptionDAO = new PostAdoptionDAO();
+			adoptionAnimalDAO = new AdoptionAnimalDAO();
 			commentP3DAO = new CommentP3DAO();
 			applyDAO = new ApplyDAO();
 			messageDAO = new MessageDAO();
@@ -326,6 +327,12 @@ public class UserManager {
 	 
 	public int updateP3Adoption(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.update(post);
+	}
+	public int updateAdoptionAnimal(AdoptionAnimal animal) throws SQLException {
+		return adoptionAnimalDAO.update(animal);
+	}
+	public int updateAdoptionAnimalWithFile(AdoptionAnimal animal) throws SQLException {
+		return adoptionAnimalDAO.updateWithFile(animal);
 	}
 	public int updateP3Approval(PostAdoption post) throws SQLException {
 		return postAdoptionDAO.updateApproval(post);
