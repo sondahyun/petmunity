@@ -21,6 +21,6 @@ public class DeletePetController implements Controller {
 
     	UserManager manager = UserManager.getInstance();			
 		manager.removePet(petId);
-		return "redirect:/myPage/myPage.jsp";	// ����� ���� ȭ������ �̵� (forwarding)	
+		return "redirect:/myPage/myPage";	// 마이페이지로 redirect
 	}
 }

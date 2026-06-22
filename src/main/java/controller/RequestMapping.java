@@ -6,6 +6,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.pet.RegisterPetController;
+import controller.pet.UpdatePetController;
+import controller.pet.DeletePetController;
 import controller.post.*;
 import controller.user.*;
 import controller.comment.*;
@@ -112,6 +114,8 @@ public class RequestMapping {
         mappings.put("/user/register_person", new RegisterUserController());
         mappings.put("/user/register_pet/form", new ForwardController("/user/register_pet.jsp")); //사람 회원가입 끝나고 동물로 넘어가는 페이지
         mappings.put("/user/register_pet", new RegisterPetController()); //동물까지 회원가입 끝
+        mappings.put("/pet/update", new UpdatePetController()); //반려동물 정보 수정
+        mappings.put("/pet/delete", new DeletePetController()); //반려동물 정보 삭제
 
         // 사용자 정보 수정 폼 요청과 수정 요청 처리 병합
 //      mappings.put("/user/update/form", new UpdateUserFormController());
