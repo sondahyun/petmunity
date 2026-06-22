@@ -11,7 +11,6 @@ import controller.Controller;
 import controller.user.UserSessionUtils;
 import model.Message;
 import model.UserInfo;
-import model.service.ExistingUserException;
 import model.service.UserManager;
 
 public class CreateMessageController implements Controller {
@@ -19,41 +18,47 @@ public class CreateMessageController implements Controller {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       	if (request.getMethod().equals("GET")) {	
-       		// GET request: 회원정보 등록 form 요청	
+       	if (request.getMethod().equals("GET")) {
     		log.debug("CreateMessageForm Request");
-    		//System.out.println("여기1");
-			return "/message/message_write.jsp";   //  registerForm���� ����     	
-	    }	
+			return "/message/message_write.jsp";
+	    }
 
     	HttpSession session = request.getSession();
 		UserManager manager = UserManager.getInstance();
 
     	int userId = UserSessionUtils.getLoginUserId(session);
-    	String loginId=request.getParameter("loginId");
-    	int receiver = manager.findUserId(loginId);
-    	
-       	Message message = new Message(
-			userId,
-			receiver,
-			request.getParameter("content"),
-			request.getParameter("mTitle")
-		);
-		//user.setUserId(1);
-		
+    	boolean toSelf = "on".equals(request.getParameter("toSelf"));
+    	String loginId = request.getParameter("loginId");
+    	String content = request.getParameter("content");
+    	String mTitle = request.getParameter("mTitle");
+
+    	int receiver;
+    	if (toSelf) {
+    		receiver = userId;					// '나에게 보내기'
+    	} else {
+    		UserInfo target = manager.findUser(loginId);
+    		if (target == null) {				// 존재하지 않는 사용자에게는 보낼 수 없음
+    			request.setAttribute("sendFailed", true);
+    			request.setAttribute("sendError", "존재하지 않는 사용자입니다. 아이디를 확인해 주세요.");
+    			request.setAttribute("mTitle", mTitle);
+    			request.setAttribute("content", content);
+    			return "/message/message_write.jsp";
+    		}
+    		receiver = target.getUserId();
+    	}
+
+       	Message message = new Message(userId, receiver, content, mTitle);
         log.debug("Create Message : {}", message);
 
 		try {
 			manager.createMessage(message);
-	        return "redirect:/message/message";	// ���� �� ����� ����Ʈ ȭ������ redirect
-	        
-		} catch (Exception e) {	// ���� �߻� �� ȸ������ form���� forwarding
-            request.setAttribute("registerFailed", true);
-			request.setAttribute("exception", e);
-			request.setAttribute("message", message);
-			
+	        return "redirect:/message/message2";	// 전송 후 보낸 쪽지함으로
+		} catch (Exception e) {
+            request.setAttribute("sendFailed", true);
+			request.setAttribute("sendError", "쪽지 전송에 실패했습니다.");
+			request.setAttribute("mTitle", mTitle);
+			request.setAttribute("content", content);
 			return "/message/message_write.jsp";
 		}
     }
 }
-
