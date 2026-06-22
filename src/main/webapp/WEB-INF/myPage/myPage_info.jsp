@@ -10,8 +10,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script>
 function userCreate() {
-   alert("실행");
-
    if (form.loginId.value == "") {
       alert("사용자 ID를 입력하십시오.");
       form.userId.focus();
@@ -143,6 +141,10 @@ function userList(targetUri) {
 				<td>${pet.kind}</td>
 			</tr>
 		</table>
+		<div class="pm-actions" style="margin-top:16px;">
+			<a class="pm-btn-line" href="<c:url value='/pet/update' />">반려동물 정보 수정</a>
+			<a class="pm-btn-danger" href="<c:url value='/pet/delete'><c:param name='petId' value='${pet.petId}'/></c:url>" onclick="return confirm('반려동물 정보를 삭제하시겠습니까?');">삭제</a>
+		</div>
 	<%} %>
 </form>
 </body>
