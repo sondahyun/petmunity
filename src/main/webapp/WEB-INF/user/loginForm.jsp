@@ -31,7 +31,7 @@ function userCreate(targetUri) {
 </head>
 <body>
 <%@include file="/WEB-INF/navbar.jsp" %>
-<div class="pm-page narrow">
+<div class="pm-page narrow auth">
 	<h1 class="pm-page-title">로그인</h1>
 	<p class="pm-page-sub">Petmunity 계정으로 로그인하세요.</p>
 

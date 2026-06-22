@@ -62,6 +62,7 @@
 	.pm-page.narrow{ max-width:520px; }
 	.pm-page.form{ max-width:860px; }
 	.pm-page.wide{ max-width:1040px; }
+	.pm-page.auth{ min-height:calc(100vh - 160px); display:flex; flex-direction:column; justify-content:center; }
 	.pm-page-title{ font-size:28px; font-weight:700; letter-spacing:-0.015em; margin:0 0 6px; color:var(--pm-ink); }
 	.pm-page-sub{ font-size:15px; color:var(--pm-muted); margin:0 0 28px; }
 	.pm-toolbar{ display:flex; justify-content:space-between; align-items:center; gap:12px; margin:0 0 22px; flex-wrap:wrap; }
