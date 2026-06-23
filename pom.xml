@@ -19,12 +19,12 @@
 		<servlet-api.version>4.0.1</servlet-api.version>
 		<jsp.version>2.3.3</jsp.version>
 		<jstl.version>1.2</jstl.version>
-		<logback-classic.version>1.2.6</logback-classic.version>
+		<logback-classic.version>1.2.13</logback-classic.version>
 		<commons-dbcp2.version>2.9.0</commons-dbcp2.version>
-		<commons-fileupload.version>1.4</commons-fileupload.version>
-		<jackson-databind.version>2.12.5</jackson-databind.version>
+		<commons-fileupload.version>1.5</commons-fileupload.version>
+		<jackson-databind.version>2.12.7.1</jackson-databind.version>
 		<junit.version>4.13.2</junit.version>
-		<oracle-jdbc-driver.version>21.3.0.0</oracle-jdbc-driver.version>
+		<oracle-jdbc-driver.version>21.9.0.0</oracle-jdbc-driver.version>
   </properties>
 
   <dependencies>
@@ -93,7 +93,7 @@
 		<dependency>
 			<groupId>com.amazonaws</groupId>
 			<artifactId>aws-java-sdk-s3</artifactId>
-			<version>1.12.470</version>
+			<version>1.12.600</version>
 		</dependency>
   </dependencies>
 
