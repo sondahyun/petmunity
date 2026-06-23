@@ -8,6 +8,8 @@
 
 	session.setAttribute("adoptAnimal", pA.getAnimal());
 	pageContext.setAttribute("apv", request.getAttribute("apId"));
+	List<CommentAdoption> c3List = (List<CommentAdoption>)request.getAttribute("c3List");
+	int adUserId = UserSessionUtils.getLoginUserId(session);
 %>
 <!DOCTYPE html>
 <html>
@@ -128,5 +130,50 @@
 	</div>
 </div>
 </form>
+
+<div class="pm-page">
+	<c:set var="pId" value="<%=pA.getPostId()%>"/>
+	<c:set var="uId" value="<%=adUserId%>"/>
+	<h2 class="pm-page-title" style="font-size:22px; margin:0 0 16px;">댓글</h2>
+	<form class="pm-form" method="post" action="<c:url value='/community/adopt_community/add_comment'><c:param name='postId' value='${pId}'/></c:url>" style="margin-bottom:24px;">
+		<div style="display:flex; gap:12px; align-items:center;">
+			<input class="pm-input" type="text" name="commentContent" placeholder="댓글을 입력하세요." style="flex:1;">
+			<input class="pm-btn" type="submit" value="작성">
+		</div>
+	</form>
+	<div>
+		<% int aci=0; %>
+		<c:forEach var="item" items="${c3List}">
+			<% int acu = c3List.get(aci).getUserId(); %>
+			<c:set var="cName" value="<%=UserSessionUtils.getUserNickName(acu)%>"/>
+			<c:if test="${item.postId == pId}">
+				<div style="border:1px solid #e5e5e7; border-radius:12px; padding:14px 16px; margin-bottom:12px;">
+					<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+						<strong>${cName}</strong>
+						<span style="color:#86868b; font-size:13px;">${item.commentDate}</span>
+					</div>
+					<c:if test="${uId != item.userId}">
+						<p style="margin:0;">${item.commentContent}</p>
+					</c:if>
+					<c:if test="${uId == item.userId}">
+						<div style="display:flex; gap:8px; align-items:center;">
+							<form method="post" action="<c:url value='/community/adopt_community/update_comment'><c:param name='postId' value='${pId}'/><c:param name='commentId' value='${item.commentId}'/></c:url>" style="display:flex; gap:8px; flex:1;">
+								<input class="pm-input" type="text" name="commentContent" value="${item.commentContent}" style="flex:1;">
+								<input class="pm-btn-line" type="submit" value="수정">
+							</form>
+							<form method="post" action="<c:url value='/community/adopt_community/delete_comment'><c:param name='postId' value='${pId}'/><c:param name='commentId' value='${item.commentId}'/></c:url>" style="display:inline;">
+								<input class="pm-btn-danger" type="submit" value="삭제">
+							</form>
+						</div>
+					</c:if>
+				</div>
+			</c:if>
+			<% aci++; %>
+		</c:forEach>
+		<c:if test="${empty c3List}">
+			<p class="pm-note">아직 작성된 댓글이 없습니다.</p>
+		</c:if>
+	</div>
+</div>
 </body>
 </html>

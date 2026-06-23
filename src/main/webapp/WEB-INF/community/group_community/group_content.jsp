@@ -6,6 +6,7 @@
    PostGroup post = (PostGroup)request.getAttribute("post");
 	int headCount = (int)request.getAttribute("headCount");
 	List<Integer> joinUser = (List<Integer>)request.getAttribute("joinUser");
+	List<CommentGroup> c1List = (List<CommentGroup>)request.getAttribute("c1List");
 	int userId= UserSessionUtils.getLoginUserId(session);
 	String lId=UserSessionUtils.getLoginId(session);
 
@@ -167,6 +168,46 @@
 			}
 		})
 	</script> --%>
+	<h2 class="pm-page-title" style="font-size:22px; margin:40px 0 16px;">댓글</h2>
+	<form class="pm-form" method="post" action="<c:url value='/community/group_community/add_comment'><c:param name='postId' value='${pId}'/></c:url>" style="margin-bottom:24px;">
+		<div style="display:flex; gap:12px; align-items:center;">
+			<input class="pm-input" type="text" name="commentContent" placeholder="댓글을 입력하세요." style="flex:1;">
+			<input class="pm-btn" type="submit" value="작성">
+		</div>
+	</form>
+	<div>
+		<% int gci=0; %>
+		<c:forEach var="item" items="${c1List}">
+			<% int gcu = c1List.get(gci).getUserId(); %>
+			<c:set var="cName" value="<%=UserSessionUtils.getUserNickName(gcu)%>"/>
+			<c:if test="${item.postId == pId}">
+				<div style="border:1px solid #e5e5e7; border-radius:12px; padding:14px 16px; margin-bottom:12px;">
+					<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+						<strong>${cName}</strong>
+						<span style="color:#86868b; font-size:13px;">${item.commentDate}</span>
+					</div>
+					<c:if test="${uId != item.userId}">
+						<p style="margin:0;">${item.commentContent}</p>
+					</c:if>
+					<c:if test="${uId == item.userId}">
+						<div style="display:flex; gap:8px; align-items:center;">
+							<form method="post" action="<c:url value='/community/group_community/update_comment'><c:param name='postId' value='${pId}'/><c:param name='commentId' value='${item.commentId}'/></c:url>" style="display:flex; gap:8px; flex:1;">
+								<input class="pm-input" type="text" name="commentContent" value="${item.commentContent}" style="flex:1;">
+								<input class="pm-btn-line" type="submit" value="수정">
+							</form>
+							<form method="post" action="<c:url value='/community/group_community/delete_comment'><c:param name='postId' value='${pId}'/><c:param name='commentId' value='${item.commentId}'/></c:url>" style="display:inline;">
+								<input class="pm-btn-danger" type="submit" value="삭제">
+							</form>
+						</div>
+					</c:if>
+				</div>
+			</c:if>
+			<% gci++; %>
+		</c:forEach>
+		<c:if test="${empty c1List}">
+			<p class="pm-note">아직 작성된 댓글이 없습니다.</p>
+		</c:if>
+	</div>
 </div>
 </body>
 </html>
