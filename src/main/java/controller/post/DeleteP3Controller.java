@@ -17,7 +17,10 @@ public class DeleteP3Controller implements Controller {
     	int postId = Integer.parseInt(request.getParameter("postId"));
     	log.debug("Delete p3_Id : {}", postId);
 
-		UserManager manager = UserManager.getInstance();			
+		UserManager manager = UserManager.getInstance();
+		manager.removeApplyByPostId(postId);			// 입양 신청서 정리
+		manager.removeAdoptionAnimalByPostId(postId);	// 동물 정보 정리
+		manager.removeC3ByPostId(postId);				// 댓글 정리
 		manager.removeP3Adoption(postId);
 		return "redirect:/community/adopt_community/adopt_community";
 	}

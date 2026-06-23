@@ -65,6 +65,21 @@ public class AdoptionAnimalDAO {
 		return 0;
 	}
 
+	public int removeByPostId(int postId) throws SQLException {
+		String sql = "DELETE FROM AdoptionAnimal WHERE postId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId });
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	/*
 	public int update(AdoptionAnimal pet) throws SQLException {
 		String sql = "UPDATE Pet "

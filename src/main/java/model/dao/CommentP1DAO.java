@@ -59,6 +59,21 @@ public class CommentP1DAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
+	public int removeByPostId(int postId) throws SQLException {
+		String sql = "DELETE FROM commentGroup WHERE postId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { postId });
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	public int remove(int commentId) throws SQLException {
 		String sql = "DELETE FROM commentGroup WHERE commentId=?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { commentId }); // JDBCUtil에 delete문과 매개 변수 설정

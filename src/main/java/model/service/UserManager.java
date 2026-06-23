@@ -341,6 +341,13 @@ public class UserManager {
 	public int removeP3Adoption(int postId) throws SQLException{
 		return postAdoptionDAO.remove(postId);
 	}
+	// 게시글 삭제 시 연관 데이터 정리용
+	public int removeC0ByPostId(int postId) throws SQLException { return commentP0DAO.removeByPostId(postId); }
+	public int removeC1ByPostId(int postId) throws SQLException { return commentP1DAO.removeByPostId(postId); }
+	public int removeC2ByPostId(int postId) throws SQLException { return commentP2DAO.removeByPostId(postId); }
+	public int removeC3ByPostId(int postId) throws SQLException { return commentP3DAO.removeByPostId(postId); }
+	public int removeAdoptionAnimalByPostId(int postId) throws SQLException { return adoptionAnimalDAO.removeByPostId(postId); }
+	public int removeApplyByPostId(int postId) throws SQLException { return applyDAO.removeByPostId(postId); }
 	public PostAdoption findP3Adoption(int postId) throws SQLException {
 		PostAdoption post = postAdoptionDAO.findPost(postId); 
 		

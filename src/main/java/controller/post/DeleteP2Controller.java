@@ -17,7 +17,8 @@ public class DeleteP2Controller implements Controller {
 		int postId = Integer.parseInt(request.getParameter("postId"));
     	log.debug("Delete post2_Id : {}", postId);
 
-		UserManager manager = UserManager.getInstance();			
+		UserManager manager = UserManager.getInstance();
+		manager.removeC2ByPostId(postId);		// 게시글의 댓글 먼저 정리
 		manager.removeP2Petstargram(postId);
 		return "redirect:/community/petstar_community/petstar_community";
 	}

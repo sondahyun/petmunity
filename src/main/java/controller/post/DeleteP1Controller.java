@@ -17,7 +17,8 @@ public class DeleteP1Controller implements Controller {
 		int postId = Integer.parseInt(request.getParameter("postId"));
     	log.debug("Delete post1_Id : {}", postId);
 
-		UserManager manager = UserManager.getInstance();			
+		UserManager manager = UserManager.getInstance();
+		manager.removeC1ByPostId(postId);		// 게시글의 댓글 먼저 정리
 		manager.removePostGroup(postId);
 		return "redirect:/community/group_community/group_community";
 	}
