@@ -120,6 +120,7 @@ public class UserDAO {
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
 				user.setJoinGroup(rs.getString("joinGroup"));
+				user.setStatus(rs.getInt("status"));
 				//pet 객체들의 list를 준다
 				return user;
 			}
