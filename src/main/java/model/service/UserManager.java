@@ -68,38 +68,9 @@ public class UserManager {
 		return userDAO.remove(loginId);
 	}
 
-	// 회원 탈퇴 시 연관 데이터까지 정리
-	public void removeUserCascade(String loginId, int userId) throws SQLException, UserNotFoundException {
-		// 1. 사용자가 작성한 게시글 + 해당 글의 댓글/입양 데이터 정리
-		for (PostInformation p : postInformationDAO.findP0WithUser(loginId)) {
-			commentP0DAO.removeByPostId(p.getPostId());
-			postInformationDAO.remove(p.getPostId());
-		}
-		for (PostGroup p : postGroupDAO.findP1WithUser(loginId)) {
-			commentP1DAO.removeByPostId(p.getPostId());
-			postGroupDAO.remove(p.getPostId());
-		}
-		for (PostPetstargram p : postPetstargramDAO.findP2WithUser(loginId)) {
-			commentP2DAO.removeByPostId(p.getPostId());
-			postPetstargramDAO.remove(p.getPostId());
-		}
-		for (PostAdoption p : postAdoptionDAO.findP3WithUser(loginId)) {
-			applyDAO.removeByPostId(p.getPostId());
-			adoptionAnimalDAO.removeByPostId(p.getPostId());
-			commentP3DAO.removeByPostId(p.getPostId());
-			postAdoptionDAO.remove(p.getPostId());
-		}
-		// 2. 사용자가 다른 글에 단 댓글 정리
-		commentP0DAO.removeByUserId(userId);
-		commentP1DAO.removeByUserId(userId);
-		commentP2DAO.removeByUserId(userId);
-		commentP3DAO.removeByUserId(userId);
-		// 3. 반려동물 정리
-		petDAO.removeByLoginId(loginId);
-		// 4. 쪽지 정리
-		messageDAO.removeByUser(userId);
-		// 5. 회원 정보 삭제
-		userDAO.remove(loginId);
+	// 회원 탈퇴: 소프트 삭제 (글·댓글·펫·쪽지는 보존하고 탈퇴 표시만)
+	public int withdrawUser(String loginId) throws SQLException, UserNotFoundException {
+		return userDAO.withdraw(loginId);
 	}
 
 	public boolean login(String loginId, String password)

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.pet.RegisterPetController;
+import model.UserInfo;
 import model.service.UserManager;
 
 public class LoginController implements Controller {
@@ -36,6 +37,12 @@ public class LoginController implements Controller {
 			// �𵨿� �α��� ó���� ����
 			UserManager manager = UserManager.getInstance();
 			manager.login(loginId, loginPwd);
+			UserInfo loginUser = manager.findUser(loginId);
+			if (loginUser != null && loginUser.getStatus() == 1) {	// 탈퇴(소프트 삭제)한 계정은 로그인 거부
+				request.setAttribute("loginFailed", true);
+				request.setAttribute("withdrawn", true);
+				return "/user/loginForm.jsp";
+			}
 			int userId = manager.findUserId(loginId);
 			System.out.println(userId);
 			

@@ -51,6 +51,14 @@ public class UserInfo {
 		this.email = email;
 	}
 
+	private int status;	// 0=활성, 1=탈퇴(소프트 삭제)
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	public int getUserId() {
 		return userId;
 	}

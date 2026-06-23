@@ -75,6 +75,7 @@ CREATE TABLE UserInfo (
     ADDRESS       VARCHAR2(50),
     EMAIL         VARCHAR2(100),
     JOINGROUP     VARCHAR2(50),
+    STATUS        NUMBER(1)      DEFAULT 0,   -- 0=활성, 1=탈퇴(소프트 삭제)
     PRIMARY KEY (USERID),
     CONSTRAINT UQ_UserInfo_LOGINID UNIQUE (LOGINID)
 );

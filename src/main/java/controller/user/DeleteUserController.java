@@ -23,10 +23,9 @@ public class DeleteUserController implements Controller {
 			return "redirect:/user/login/form";
 		}
 		String loginId = UserSessionUtils.getLoginId(session);
-		int userId = UserSessionUtils.getLoginUserId(session);
-		log.debug("Delete User (cascade) : {} / {}", loginId, userId);
+		log.debug("Withdraw User (soft delete) : {}", loginId);
 
-		manager.removeUserCascade(loginId, userId);		// 연관 데이터까지 정리 후 탈퇴
+		manager.withdrawUser(loginId);		// 소프트 삭제: 데이터는 보존하고 탈퇴 표시만
 		session.removeAttribute(UserSessionUtils.USER_SESSION_KEY);
 		session.invalidate();
 

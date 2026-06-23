@@ -69,6 +69,21 @@ public class UserDAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
+	public int withdraw(String loginId) throws SQLException {		// 소프트 삭제: 탈퇴 표시만
+		String sql = "UPDATE UserInfo SET status=1 WHERE loginId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId });
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	public int remove(String loginId) throws SQLException {
 		String sql = "DELETE FROM UserInfo WHERE loginId=?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId }); // JDBCUtil에 delete문과 매개 변수 설정
@@ -136,6 +151,7 @@ public class UserDAO {
 				user.setGender(rs.getString("gender"));
 				user.setAddress(rs.getString("address"));
 				user.setEmail(rs.getString("email"));
+				user.setStatus(rs.getInt("status"));
 				//pet 객체들의 list를 준다
 				return user;
 			}
