@@ -82,6 +82,21 @@ public class PetDAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
+	public int removeByLoginId(String loginId) throws SQLException {
+		String sql = "DELETE FROM Pet WHERE loginId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { loginId });
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	public int remove(int petId) throws SQLException {
 		String sql = "DELETE FROM Pet WHERE petId=?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { petId }); // JDBCUtil에 delete문과 매개 변수 설정

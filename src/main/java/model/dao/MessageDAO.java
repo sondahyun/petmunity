@@ -34,6 +34,21 @@ public class MessageDAO {
 	/**
 	 * 사용자 ID에 해당하는 사용자를 삭제.
 	 */
+	public int removeByUser(int userId) throws SQLException {
+		String sql = "DELETE FROM MESSAGE WHERE sender=? OR receiver=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userId, userId });
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	public int remove(int messageId) throws SQLException {
 		String sql = "DELETE FROM MESSAGE WHERE messageId=?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { messageId }); // JDBCUtil에 delete문과 매개 변수 설정

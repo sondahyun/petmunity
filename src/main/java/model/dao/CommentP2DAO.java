@@ -74,6 +74,21 @@ public class CommentP2DAO {
 		return 0;
 	}
 
+	public int removeByUserId(int userId) throws SQLException {
+		String sql = "DELETE FROM commentPetstargram WHERE userId=?";
+		jdbcUtil.setSqlAndParameters(sql, new Object[] { userId });
+		try {
+			return jdbcUtil.executeUpdate();
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {
+			jdbcUtil.commit();
+			jdbcUtil.close();
+		}
+		return 0;
+	}
+
 	public int remove(int commentId) throws SQLException {
 		String sql = "DELETE FROM commentPetstargram WHERE commentId=?";
 		jdbcUtil.setSqlAndParameters(sql, new Object[] { commentId }); // JDBCUtil에 delete문과 매개 변수 설정
