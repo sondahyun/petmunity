@@ -88,10 +88,8 @@ public class RequestMapping {
         //수정
         mappings.put("/community/info_community/info_comment", new ForwardController("/community/info_community/info_comment.jsp"));
         mappings.put("/community/info_community/modal", new ForwardController("/community/info_community/modal.jsp"));
-        
-        //mappings.put("/community/info_community/cmList", new ListC0Controller());
-        
-        
+
+
         //message
         mappings.put("/message/message", new ListMReceiverController());
         mappings.put("/message/message2", new ListMSenderController());
