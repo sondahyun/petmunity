@@ -41,7 +41,11 @@ public class RequestMapping {
 
         mappings.put("/community/adopt_community/adopt_info/createApply", new CreateApplyController());
         mappings.put("/community/adopt_community/adopt_info/deleteApply", new DeleteApplyController());
-        
+
+        mappings.put("/community/adopt_community/add_comment", new CreateC3Controller());
+        mappings.put("/community/adopt_community/update_comment", new UpdateC3Controller());
+        mappings.put("/community/adopt_community/delete_comment", new DeleteC3Controller());
+
         //펫스타그램
         mappings.put("/community/petstar_community/petstar_community", new ListP2Controller());
         mappings.put("/community/petstar_community/petstar_content", new ViewP2Controller());
@@ -62,7 +66,11 @@ public class RequestMapping {
         
         mappings.put("/community/group_community/group_content_update", new UpdateP1Controller());
         mappings.put("/community/group_community/group_content_delete", new DeleteP1Controller());
-        
+
+        mappings.put("/community/group_community/add_comment", new CreateC1Controller());
+        mappings.put("/community/group_community/update_comment", new UpdateC1Controller());
+        mappings.put("/community/group_community/delete_comment", new DeleteC1Controller());
+
         //검색게시판
         mappings.put("/search/search", new ListSearchController());
         

@@ -32,9 +32,10 @@ public class ViewP1Controller implements Controller {
 		post = manager.findP1Group(postId);	
 		List<Integer> joinUser = manager.findUserWithGroup(post.getPostTitle());
 		
-		request.setAttribute("post", post);	
+		request.setAttribute("post", post);
 		request.setAttribute("headCount", post.getHeadCount());
 		request.setAttribute("joinUser", joinUser);
+		request.setAttribute("c1List", manager.findC1List());		// 그룹 게시글 댓글 목록
 
 		return "/community/group_community/group_content.jsp";				
     }

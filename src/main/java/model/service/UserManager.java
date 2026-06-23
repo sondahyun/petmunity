@@ -262,6 +262,21 @@ public class UserManager {
 	}
 	
 	//c1
+	public int createC1(CommentGroup ci) throws SQLException {
+		return commentP1DAO.create(ci);
+	}
+	public int updateC1(CommentGroup ci) throws SQLException {
+		return commentP1DAO.update(ci);
+	}
+	public int removeC1(int commentId) throws SQLException {
+		return commentP1DAO.remove(commentId);
+	}
+	public CommentGroup findC1(int commentId) throws SQLException {
+		return commentP1DAO.findC1(commentId);
+	}
+	public List<CommentGroup> findC1List() throws SQLException {
+		return commentP1DAO.findC1List();
+	}
 	public List<CommentGroup> findC1WithUser(int userId) throws SQLException {
 		return commentP1DAO.findC1WithUser(userId);
 	}
@@ -405,6 +420,21 @@ public class UserManager {
 	}
 	
 	//c3
+	public int createC3(CommentAdoption ci) throws SQLException {
+		return commentP3DAO.create(ci);
+	}
+	public int updateC3(CommentAdoption ci) throws SQLException {
+		return commentP3DAO.update(ci);
+	}
+	public int removeC3(int commentId) throws SQLException {
+		return commentP3DAO.remove(commentId);
+	}
+	public CommentAdoption findC3(int commentId) throws SQLException {
+		return commentP3DAO.findC3(commentId);
+	}
+	public List<CommentAdoption> findC3List() throws SQLException {
+		return commentP3DAO.findC3List();
+	}
 	public List<CommentAdoption> findC3WithUser(int userId) throws SQLException {
 		return commentP3DAO.findC3WithUser(userId);
 	}

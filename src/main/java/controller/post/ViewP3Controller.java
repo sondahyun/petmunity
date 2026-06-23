@@ -47,6 +47,7 @@ public class ViewP3Controller implements Controller {
 			manager.updateP3Approval(pA);
 		}
 		request.setAttribute("pA", pA);
+		request.setAttribute("c3List", manager.findC3List());			// 입양 게시글 댓글 목록
 		return "/community/adopt_community/adopt_info.jsp";				// ����� ���� ȭ������ �̵�
  	
     }
