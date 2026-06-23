@@ -96,6 +96,7 @@ public class RequestMapping {
 
         mappings.put("/message/message_write", new CreateMessageController());
         mappings.put("/message/message_content", new ViewMessageController());
+        mappings.put("/message/message_delete", new DeleteMessageController());
 
         
         //myPage

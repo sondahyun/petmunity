@@ -21,6 +21,6 @@ public class DeleteMessageController implements Controller {
 
     	UserManager manager = UserManager.getInstance();			
 		manager.removeMessage(messageId);
-		return "redirect:/message/message.jsp";	// ����� ���� ȭ������ �̵� (forwarding)	
+		return "redirect:/message/message";	// 받은 쪽지함으로 redirect
 	}
 }
