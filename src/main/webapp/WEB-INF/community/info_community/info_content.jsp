@@ -9,6 +9,7 @@
 	Collections.sort(c0List);
 %>
 <c:set var="pId" value="<%=post.getPostId() %>"/>
+<c:set var="uId" value="<%=UserSessionUtils.getLoginUserId(session) %>"/>
 
 <html>
 <head>
