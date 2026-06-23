@@ -55,6 +55,7 @@
 		</table>
 		<div class="pm-actions">
 			<input class="pm-btn-line" type="button" value="목록보기" onClick="userList('<c:url value='/message/message' />')">
+			<a class="pm-btn-danger" href="<c:url value='/message/message_delete'><c:param name='messageId' value='${message.messageId}'/></c:url>" onclick="return confirm('이 쪽지를 삭제하시겠습니까?');">삭제</a>
 		</div>
 	</form>
 </div>
