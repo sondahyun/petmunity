@@ -39,7 +39,12 @@ function userCreate(targetUri) {
 	<form name="form" method="POST" action="<c:url value='/user/login' />">
 		<!-- 로그인이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
 		<c:if test="${loginFailed}">
-			<p class="pm-note" style="color:#d70015;">아이디 또는 비밀번호가 올바르지 않습니다.</p>
+			<p class="pm-note" style="color:#d70015;">
+				<c:choose>
+					<c:when test="${withdrawn}">탈퇴한 계정입니다.</c:when>
+					<c:otherwise>아이디 또는 비밀번호가 올바르지 않습니다.</c:otherwise>
+				</c:choose>
+			</p>
 		</c:if>
 
 		<div class="pm-form">
