@@ -39,6 +39,7 @@ DROP TABLE PostInformation CASCADE CONSTRAINTS;
 DROP TABLE PostGroup CASCADE CONSTRAINTS;
 DROP TABLE PostPetstargram CASCADE CONSTRAINTS;
 DROP TABLE PostAdoption CASCADE CONSTRAINTS;
+DROP TABLE UploadedFile CASCADE CONSTRAINTS;
 DROP TABLE UserInfo CASCADE CONSTRAINTS;
 
 -- ----------------------------------------------------------------------------
@@ -78,6 +79,14 @@ CREATE TABLE UserInfo (
     STATUS        NUMBER(1)      DEFAULT 0,   -- 0=활성, 1=탈퇴(소프트 삭제)
     PRIMARY KEY (USERID),
     CONSTRAINT UQ_UserInfo_LOGINID UNIQUE (LOGINID)
+);
+
+-- 업로드 이미지 저장 (BLOB) - 게시글/펫의 fileName(=fileKey)으로 참조
+CREATE TABLE UploadedFile (
+    FILEKEY       VARCHAR2(255)  NOT NULL,
+    CONTENTTYPE   VARCHAR2(100),
+    FILEDATA      BLOB,
+    PRIMARY KEY (FILEKEY)
 );
 
 -- 반려동물 정보
