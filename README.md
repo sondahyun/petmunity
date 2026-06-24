@@ -238,7 +238,7 @@ petmunity/
       <sub>@UN15</sub>
     </td>
     <td align="center" width="160">
-      <a href="https://github.com/seungyeonk"><img src="https://github.com/seungyeonk.png" width="110" height="110" style="border-radius:50%"/><br/><b>seungyeonk</b></a><br/>
+      <a href="https://github.com/seungyeonk"><img src="https://github.com/seungyeonk.png" width="110" height="110" style="border-radius:50%"/><br/><b>강승연</b></a><br/>
       <sub>@seungyeonk</sub>
     </td>
   </tr>
