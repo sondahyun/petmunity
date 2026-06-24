@@ -54,7 +54,11 @@
 	</c:if>
 
 	<div class="pm-panel">
-		<img class="pm-media" src="<c:url value='/images/favicon.png' />" alt="대표 이미지" style="max-width:240px"/>
+		<% if (pA.getAnimal() != null && pA.getAnimal().getFilename() != null) { %>
+			<img class="pm-media" src="<c:url value='/image?file=${pA.animal.filename}'/>" alt="${pA.postTitle}" style="max-width:240px"/>
+		<% } else { %>
+			<img class="pm-media" src="<c:url value='/images/logo_transparent.png' />" alt="대표 이미지" style="max-width:240px"/>
+		<% } %>
 
 		<table class="pm-detail">
 			<tr>
