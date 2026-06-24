@@ -127,3 +127,15 @@
 		</div>
 	</div>
 </nav>
+<script>
+/* 업로드 이미지가 없거나 경로가 안 맞을 때 로고 플레이스홀더로 대체 (전역 폴백) */
+document.addEventListener('error', function(e){
+	var t = e.target;
+	if (t && t.tagName === 'IMG' && !t.dataset.pmFallback) {
+		t.dataset.pmFallback = '1';
+		t.src = '${pageContext.request.contextPath}/images/logo_transparent.png';
+		t.style.objectFit = 'contain';
+		t.style.background = '#f5f5f7';
+	}
+}, true);
+</script>

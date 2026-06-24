@@ -214,7 +214,7 @@ function userList(targetUri) {
 		<div class="pm-field">
 			<label class="pm-label">사진</label>
 			<%if(pet.getFilename() == null){ %>
-				<img class="pm-media" src="<c:url value='/images/favicon.png' />" style="width:200px; height:200px;"/>
+				<img class="pm-media" src="<c:url value='/images/logo_transparent.png' />" style="width:200px; height:200px;"/>
 			<%}else{ %>
 				<img class="pm-media" src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px;" />
 			<%} %>

@@ -12,7 +12,7 @@
 	Collections.sort(p2List);
 	Collections.sort(p3List);
 	String ctx = request.getContextPath();
-	String defaultImg = ctx + "/images/linkedin_profile_image.png";
+	String defaultImg = ctx + "/images/logo_transparent.png";
 %>
 <!DOCTYPE html>
 <html>

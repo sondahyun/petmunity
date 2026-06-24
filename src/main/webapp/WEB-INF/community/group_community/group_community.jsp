@@ -51,7 +51,7 @@
                <%if(file != null) {%>
                   <img src="<c:url value='/image?file=${item.fileName}'/>" alt="모임 대표 이미지" />
                <%} else{%>
-                  <img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="모임 대표 이미지" />
+                  <img src="<c:url value='/images/logo_transparent.png'/>" alt="모임 대표 이미지" />
                <%} %>
             </div>
             <div class="pm-card-body">

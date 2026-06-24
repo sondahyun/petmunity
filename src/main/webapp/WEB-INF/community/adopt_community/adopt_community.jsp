@@ -60,7 +60,7 @@
 				<%if(file != null) {%>
 					<img src="<c:url value='/image?file=${item.animal.filename}'/>" alt="">
 				<%} else{%>
-					<img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="">
+					<img src="<c:url value='/images/logo_transparent.png'/>" alt="">
 				<%} %>
 			</div>
 			<div class="pm-card-body">

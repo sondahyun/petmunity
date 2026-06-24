@@ -50,7 +50,7 @@
 
 	<div class="pm-panel">
 		<% if(post.getFileName() == null){%>
-			<img class="pm-media" src="<c:url value='/images/linkedin_profile_image.png' />" alt="대표 이미지" />
+			<img class="pm-media" src="<c:url value='/images/logo_transparent.png' />" alt="대표 이미지" />
 		<%}
 		else{%>
 			<img class="pm-media" src="<c:url value='/image?file=${post.fileName}'/>" alt="${post.postTitle}" />

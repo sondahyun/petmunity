@@ -55,7 +55,7 @@
 					<%if(file != null) {%>
 						<img src="<c:url value='/image?file=${item.fileName}'/>" alt="${item.postTitle}" />
 					<%} else{%>
-						<img src="<c:url value='/images/linkedin_profile_image.png'/>" alt="${item.postTitle}" />
+						<img src="<c:url value='/images/logo_transparent.png'/>" alt="${item.postTitle}" />
 					<%} %>
 				</div>
 				<div class="pm-card-body">
