@@ -66,10 +66,10 @@ function userList(targetUri) {
 	</c:if>
 
 	<div class="pm-media" style="max-width:200px; margin:0 0 28px;">
-		<%if(pet!=null && pet.getFilename() == null){ %>
-			<img src="<c:url value='/images/linkedin_profile_image.png' />" style="width:200px; height:200px; border-radius:14px;"/>
+		<%if(pet != null && pet.getFilename() != null){ %>
+			<img src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px; border-radius:14px; object-fit:cover;" />
 		<%}else{ %>
-			<img src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px; border-radius:14px;" />
+			<img src="<c:url value='/images/logo_transparent.png' />" style="width:200px; height:200px; border-radius:14px; object-fit:contain; background:var(--pm-parch);"/>
 		<%} %>
 	</div>
 
