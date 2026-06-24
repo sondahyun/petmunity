@@ -123,11 +123,11 @@
 - 정보(P0) / 그룹(P1) / 펫스타그램(P2) / 입양(P3) 게시판을 **동일한 번호 체계**로 통일해, 게시글(`Post*`)과 댓글(`Comment*`) / DAO / 컨트롤러를 일관된 패턴으로 구현했습니다.
 - 입양(P3)은 공고글에 **동물 정보(`AdoptionAnimal`)** 를 함께 등록하고, **입양 신청서(`ApplyForAdoption`)** 로 신청을 받는 확장 워크플로우를 가집니다.
 
-## 🖼️ 이미지 업로드 - S3 / 로컬 전환형 저장소
+## 🖼️ 이미지 업로드 - Oracle BLOB 저장
 
-- 업로드 이미지는 **영문 파일명(UUID + 확장자)** 으로 저장해 한글 파일명/인코딩 이슈를 피합니다.
-- `StorageUtil`이 저장소를 추상화 - `aws.properties`에 S3 설정이 있으면 **AWS S3**에, 없으면 **로컬 폴더**에 자동 저장(폴백)합니다. 자격증명은 `.gitignore` 처리해 커밋되지 않습니다.
-- 저장된 이미지는 `ImageController`가 `/image?file=...` 로 **직접 스트리밍**해, 톰캣 정적 서빙 캐시 문제를 우회합니다.
+- 업로드 이미지의 실제 바이트를 **Oracle DB의 BLOB 컬럼(`UploadedFile`)** 에 저장합니다. S3나 로컬 파일시스템에 의존하지 않아 **DB 하나만 있으면 이미지까지 그대로 따라옵니다.**
+- `StorageUtil`이 저장소를 추상화 - `save()`는 BLOB으로 INSERT, `read()`는 BLOB을 읽어 스트림으로 반환합니다.
+- 게시글/펫의 `fileName` 컬럼엔 **key(UUID + 확장자)** 만 두고, `ImageController`가 `/image?file=key` 로 BLOB을 **직접 스트리밍**합니다. (영문 UUID key라 한글 파일명/인코딩 이슈도 없음)
 
 ## 🔗 데이터 정합성 - 애플리케이션 레벨 정리
 
@@ -188,11 +188,7 @@ db.username=<user>
 db.password=<password>
 ```
 
-### 2) (선택) 이미지 S3 저장
-
-`aws.properties.example`을 `aws.properties`로 복사해 값을 채우면 이미지가 S3에 저장됩니다. **비워두면 로컬 폴더에 저장**되며, `aws.properties`는 git에 커밋되지 않습니다.
-
-### 3) 빌드 / 실행
+### 2) 빌드 / 실행
 
 ```bash
 mvn -q -DskipTests package
@@ -271,7 +267,6 @@ petmunity/
 ### Storage / Build
 
 <div>
-  <img src="https://img.shields.io/badge/AWS_S3-569A31?style=for-the-badge&logo=amazons3&logoColor=white"/>
   <img src="https://img.shields.io/badge/Commons_FileUpload-D22128?style=for-the-badge&logo=apache&logoColor=white"/>
   <img src="https://img.shields.io/badge/Maven-C71A36?style=for-the-badge&logo=apachemaven&logoColor=white"/>
   <img src="https://img.shields.io/badge/Tomcat_9-F8DC75?style=for-the-badge&logo=apachetomcat&logoColor=black"/>
