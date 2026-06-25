@@ -95,14 +95,38 @@
 - **그룹**: 모임 개설, 모집 인원 설정, 멤버 참여
 - 게시글 삭제 시 **달린 댓글/연관 데이터까지 함께 정리**(입양글은 동물 정보/신청서 포함)
 
-## 🔎 통합 검색 / 쪽지 / 마이페이지
+## 🗨️ 게시글 상세 / 댓글 / 입양 신청
 
 <table>
-  <tr><td align="center"><img src="./docs/search.png" width="720"/></td></tr>
+  <tr>
+    <th width="50%">게시글 상세 + 댓글</th>
+    <th width="50%">입양 상세 + 신청</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="./docs/post-detail.png" width="100%"/></td>
+    <td align="center"><img src="./docs/adopt-detail.png" width="100%"/></td>
+  </tr>
 </table>
 
-- **통합 검색**: 커뮤니티 종류 + 키워드(+ 기간)로 4개 게시판을 한 번에 검색해 통합 결과로 표시
-- **쪽지**: 회원 간 쪽지 보내기(받은/보낸함), 수신자 존재 확인, 나에게 보내기, 삭제 지원
+- 게시글 상세에서 **댓글 작성 / 수정 / 삭제**(작성자만 수정/삭제), 입양 글은 동물 정보를 확인하고 **입양/임보 신청서** 제출
+
+## 💬 통합 검색 / 쪽지 / 마이페이지
+
+<table>
+  <tr>
+    <th width="33%">통합 검색</th>
+    <th width="33%">쪽지함</th>
+    <th width="33%">마이페이지</th>
+  </tr>
+  <tr>
+    <td align="center"><img src="./docs/search.png" width="100%"/></td>
+    <td align="center"><img src="./docs/message.png" width="100%"/></td>
+    <td align="center"><img src="./docs/mypage.png" width="100%"/></td>
+  </tr>
+</table>
+
+- **통합 검색**: 커뮤니티 종류 + 키워드(+ 기간)로 4개 게시판을 한 번에 검색
+- **쪽지**: 회원 간 쪽지(받은/보낸함), 수신자 존재 확인, 나에게 보내기, 삭제
 - **마이페이지**: 내가 쓴 글 / 내 댓글 모아보기, 회원 정보 수정, 반려동물 정보 수정 / 삭제
 
 # 프로젝트 핵심 기술
