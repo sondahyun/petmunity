@@ -24,7 +24,8 @@ public class UserSessionUtils {
     	UserManager manager = UserManager.getInstance();
     	try {
 			UserInfo user = manager.findUser(userId);
-			if (user != null && user.getStatus() == 1) return "탈퇴한 회원";
+			if (user == null) return "(알 수 없음)";
+			if (user.getStatus() == 1) return "탈퇴한 회원";
 			return user.getUserNickname();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -37,7 +38,8 @@ public class UserSessionUtils {
     	UserManager manager = UserManager.getInstance();
     	try {
 			UserInfo user = manager.findUser(loginId);
-			if (user != null && user.getStatus() == 1) return "탈퇴한 회원";
+			if (user == null) return "(알 수 없음)";
+			if (user.getStatus() == 1) return "탈퇴한 회원";
 			return user.getUserNickname();
 		} catch (SQLException e) {
 			e.printStackTrace();
