@@ -171,7 +171,7 @@ User Browser
                       └─ DAO → JDBCUtil → ConnectionManager (DBCP2 Pool)
                           └─ Oracle DB
           └─ View : JSP + JSTL   (forward 시 렌더링)
-      └─ ImageController → StorageUtil (S3 / 로컬)  → 이미지 스트리밍
+      └─ ImageController → StorageUtil (Oracle BLOB)  → 이미지 스트리밍
 ```
 
 # ERD
@@ -237,8 +237,8 @@ petmunity/
     │   │   ├── (도메인)        # UserInfo, Pet, Post*, Comment*, AdoptionAnimal, Apply, Message
     │   │   ├── service         # UserManager (비즈니스 로직, 싱글톤 Facade)
     │   │   └── dao             # DAO + JDBCUtil + ConnectionManager (DBCP2)
-    │   └── util                # StorageUtil (S3 / 로컬 이미지 저장)
-    ├── resources               # context.properties, schema.sql, aws.properties(.example)
+    │   └── util                # StorageUtil (이미지 BLOB 저장)
+    ├── resources               # context.properties, schema.sql, logback.xml
     └── webapp
         └── WEB-INF
             ├── navbar.jsp      # 공통 내비게이션 + 디자인 시스템
