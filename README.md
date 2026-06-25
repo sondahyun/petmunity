@@ -237,7 +237,7 @@ petmunity/
     │   │   ├── (도메인)        # UserInfo, Pet, Post*, Comment*, AdoptionAnimal, Apply, Message
     │   │   ├── service         # UserManager (비즈니스 로직, 싱글톤 Facade)
     │   │   └── dao             # DAO + JDBCUtil + ConnectionManager (DBCP2)
-    │   └── util                # StorageUtil (이미지 BLOB 저장)
+    │   └── util                # StorageUtil(이미지 BLOB 저장), PasswordUtil(비밀번호 해싱)
     ├── resources               # context.properties, schema.sql, logback.xml
     └── webapp
         └── WEB-INF
