@@ -97,10 +97,6 @@ function userList(targetUri) {
 			<td>${user.loginId}</td>
 		</tr>
 		<tr>
-			<th>비밀번호</th>
-			<td>${user.loginPwd}</td>
-		</tr>
-		<tr>
 			<th>이메일 주소</th>
 			<td>${user.email}</td>
 		</tr>

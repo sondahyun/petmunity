@@ -171,10 +171,7 @@ public class UserInfo {
 
 	/* ��й�ȣ �˻� */
 	public boolean matchPassword(String password) {
-		if (password == null) {
-			return false;
-		}
-		return this.loginPwd.equals(password);
+		return util.PasswordUtil.matches(password, this.loginPwd);
 	}
 	
 	public boolean isSameUser(UserInfo user) {

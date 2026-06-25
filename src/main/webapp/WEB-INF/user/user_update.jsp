@@ -22,12 +22,8 @@ function userCreate() {
 		form.userId.focus();
 		return false;
 	}
-	if (form.loginPwd.value == "") {
-		alert("비밀번호를 입력하십시오.");
-		form.loginPwd.focus();
-		return false;
-	}
-	if (form.loginPwd.value != form.password2.value) {
+	// 비밀번호는 변경할 때만 입력 (빈 칸이면 기존 비밀번호 유지)
+	if (form.loginPwd.value != "" && form.loginPwd.value != form.password2.value) {
 		alert("비밀번호가 일치하지 않습니다.");
 		form.password2.focus();
 		return false;
@@ -151,12 +147,12 @@ function userList(targetUri) {
 
 		<div class="pm-field">
 			<label class="pm-label">비밀번호</label>
-			<input type="password" class="pm-input" name="loginPwd" value="${user.loginPwd}">
+			<input type="password" class="pm-input" name="loginPwd" value="" placeholder="변경할 때만 입력하세요">
 		</div>
 
 		<div class="pm-field">
 			<label class="pm-label">비밀번호 확인</label>
-			<input type="password" class="pm-input" name="password2">
+			<input type="password" class="pm-input" name="password2" placeholder="변경할 때만 입력하세요">
 		</div>
 
 		<div class="pm-field">

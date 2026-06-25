@@ -81,6 +81,13 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- 비밀번호 단방향 해싱 -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>0.4</version>
+		</dependency>
+
 		<!-- for unit test -->
 		<dependency>
 			<groupId>junit</groupId>

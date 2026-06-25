@@ -168,6 +168,12 @@ public class UpdateUserController implements Controller {
        	String phoneNumber = phone1+"-"+phone2+"-"+phone3;
        	Pet updatePet;
 
+       	// 비밀번호 칸이 비어 있으면 기존 비밀번호(해시) 유지
+       	if (loginPwd == null || loginPwd.trim().isEmpty()) {
+       		UserInfo current = UserManager.getInstance().findUser(UserSessionUtils.getLoginId(session));
+       		if (current != null) loginPwd = current.getLoginPwd();
+       	}
+
     	// POST request (ȸ�������� parameter�� ���۵�)
     	UserInfo updateUser = new UserInfo(userId, loginId, loginPwd,userNickname,
     								userBirth, phoneNumber, gender, address, email);
