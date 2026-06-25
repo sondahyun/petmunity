@@ -46,9 +46,9 @@ function userList(targetUri) {
 	<h1 class="pm-page-title">폼 작성</h1>
 	<p class="pm-page-sub">입양·임보 글을 등록합니다.</p>
 
-	<%-- <c:if test="${registerFailed}">
-		<font color="red"><c:out value="${exception.getMessage()}" /></font>
-	</c:if>   --%>
+	<c:if test="${creationFailed}">
+		<p class="pm-note" style="color:#d70015;"><c:out value="${not empty errorMessage ? errorMessage : exception.getMessage()}" /></p>
+	</c:if>
 
 	<form name="form" method="POST" action="<c:url value='/community/adopt_community/adopt_community/add_content' />" enctype="multipart/form-data">
 		<div class="pm-form">

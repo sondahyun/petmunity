@@ -45,6 +45,10 @@ function userList(targetUri) {
 	<h1 class="pm-page-title">펫스타그램 글 작성</h1>
 	<p class="pm-page-sub">반려동물의 사진과 이야기를 남겨보세요.</p>
 
+	<c:if test="${creationFailed}">
+		<p class="pm-note" style="color:#d70015;"><c:out value="${not empty errorMessage ? errorMessage : exception.getMessage()}" /></p>
+	</c:if>
+
 	<form name="form" class="pm-form" method="post" action="<c:url value='/community/petstar_community/add_content'/>" enctype="multipart/form-data">
 		<div class="pm-field">
 			<label class="pm-label" for="postTitle">제목</label>

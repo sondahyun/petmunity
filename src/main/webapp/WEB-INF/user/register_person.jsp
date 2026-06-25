@@ -91,7 +91,7 @@ function userList(targetUri) {
 	<form name="form" method="POST" action="<c:url value='/user/register_person' />">
 		<!-- 회원가입이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
 		<c:if test="${registerFailed}">
-			<p class="pm-note" style="color:#d70015;"><c:out value="${exception.getMessage()}" /></p>
+			<p class="pm-note" style="color:#d70015;"><c:out value="${not empty errorMessage ? errorMessage : exception.getMessage()}" /></p>
 		</c:if>
 
 		<div class="pm-form">

@@ -20,7 +20,10 @@ public class CreateC3Controller implements Controller {
     	int userId = UserSessionUtils.getLoginUserId(session);
     	int postId = Integer.parseInt(request.getParameter("postId"));
     	String content = request.getParameter("commentContent");
-    	if (content == null || content.trim().isEmpty()) content = "댓글 작성 실패";
+    	// 서버측 검증: 빈 댓글은 저장하지 않고 원래 글로 돌아감
+    	if (content == null || content.trim().isEmpty())
+    		return "redirect:/community/adopt_community/adopt_info?postId=" + postId;
+    	content = content.trim();
 
     	CommentAdoption ci = new CommentAdoption(content, postId, userId);
     	try {

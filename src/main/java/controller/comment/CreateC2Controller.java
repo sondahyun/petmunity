@@ -32,8 +32,12 @@ public class CreateC2Controller implements Controller {
        	int postId = Integer.parseInt(request.getParameter("postId"));
        	String content = request.getParameter("commentContent");
        	
-        if(content == null)
-           content = "댓글 작성 실패";
+        // 서버측 검증: 빈 댓글은 저장하지 않고 원래 글로 돌아감
+        if (content == null || content.trim().isEmpty()) {
+            session.setAttribute("postId", String.valueOf(postId));
+            return "redirect:/community/petstar_community/petstar_content";
+        }
+        content = content.trim();
 
        	System.out.println("userId, postId, content : "+ userId+" "+postId+" "+content);
 

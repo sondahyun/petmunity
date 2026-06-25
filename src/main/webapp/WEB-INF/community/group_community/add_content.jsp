@@ -47,8 +47,8 @@ function userList(targetUri) {
    <form name="form" method="POST" action="<c:url value='/community/group_community/add_content' />" enctype="multipart/form-data" class="pm-form">
 
       <!-- 등록 실패 시 exception 객체에 저장된 오류 메시지를 출력 -->
-      <c:if test="${registerFailed}">
-         <p class="pm-note" style="color:#d70015"><c:out value="${exception.getMessage()}" /></p>
+      <c:if test="${creationFailed}">
+         <p class="pm-note" style="color:#d70015"><c:out value="${not empty errorMessage ? errorMessage : exception.getMessage()}" /></p>
       </c:if>
 
       <div class="pm-field">

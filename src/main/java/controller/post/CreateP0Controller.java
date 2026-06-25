@@ -122,13 +122,21 @@ public class CreateP0Controller implements Controller {
 			}
 		}
 
+		// 서버측 검증: 제목/내용 필수
+		if (postTitle == null || postTitle.trim().isEmpty()
+				|| postContent == null || postContent.trim().isEmpty()) {
+			request.setAttribute("creationFailed", true);
+			request.setAttribute("errorMessage", "제목과 내용을 모두 입력해 주세요.");
+			return "/community/info_community/add_content.jsp";
+		}
+
 		PostInformation pi = new PostInformation(
-				postTitle,
-				postContent,
+				postTitle.trim(),
+				postContent.trim(),
 				filename,
 				kind,
 				String.valueOf(loginId)
-				);		
+				);
 
 		try {
 			UserManager manager = UserManager.getInstance();

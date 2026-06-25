@@ -128,9 +128,17 @@ public class CreateP1Controller implements Controller {
 			}
 		}
 
+		// 서버측 검증: 제목/내용 필수
+		if (postTitle == null || postTitle.trim().isEmpty()
+				|| postContent == null || postContent.trim().isEmpty()) {
+			request.setAttribute("creationFailed", true);
+			request.setAttribute("errorMessage", "제목과 내용을 모두 입력해 주세요.");
+			return "/community/group_community/add_content.jsp";
+		}
+
 		PostGroup pg = new PostGroup(
-				postTitle,
-				postContent,
+				postTitle.trim(),
+				postContent.trim(),
 				groupPurpose,
 				region,
 				headCount,

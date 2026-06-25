@@ -126,13 +126,21 @@ public class CreateP2Controller implements Controller {
 		
 		System.out.println(postTitle+" "+postContent+" "+filename+" "+kind+" "+loginId);
 				
+		// 서버측 검증: 제목/내용 필수
+		if (postTitle == null || postTitle.trim().isEmpty()
+				|| postContent == null || postContent.trim().isEmpty()) {
+			request.setAttribute("creationFailed", true);
+			request.setAttribute("errorMessage", "제목과 내용을 모두 입력해 주세요.");
+			return "/community/petstar_community/add_content.jsp";
+		}
+
 		PostPetstargram pi = new PostPetstargram(
-				postTitle,
-				postContent,
+				postTitle.trim(),
+				postContent.trim(),
 				filename,
 				kind,
 				String.valueOf(loginId)
-				);		
+				);
 
 		try {
 			UserManager manager = UserManager.getInstance();
