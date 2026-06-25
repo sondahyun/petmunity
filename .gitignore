@@ -1,4 +1,1 @@
 /target/
-
-# DB 접속 정보 (비밀번호 포함 - 커밋 금지)
-src/main/resources/context.properties
