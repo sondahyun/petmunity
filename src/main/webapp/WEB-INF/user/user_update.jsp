@@ -4,8 +4,6 @@
 <%
 	UserInfo user = (UserInfo)request.getAttribute("user");
 	Pet pet = (Pet)request.getAttribute("pet");
-	System.out.println(pet.toString());
-
 %>
 <!DOCTYPE html>
 <html>
@@ -177,12 +175,12 @@ function userList(targetUri) {
 			<label class="pm-label">성별</label>
 			<div class="pm-radios">
 			<%
-			if(pet.getGender().equals("female")) {%>
+			if(pet != null && "female".equals(pet.getGender())) {%>
 				<label><input type="radio" name="pGender" value="female" checked /> 여성</label>
 				<label><input type="radio" name="pGender" value="male"/> 남성</label>
 			<%} else{%>
 				<label><input type="radio" name="pGender" value="female"  /> 여성</label>
-				<label><input type="radio" name="pGender" value="male" checked/> 남성</label>
+				<label><input type="radio" name="pGender" value="male" <%= "male".equals(pet != null ? pet.getGender() : null) ? "checked" : "" %>/> 남성</label>
 			<%} %>
 			</div>
 		</div>
@@ -209,7 +207,7 @@ function userList(targetUri) {
 
 		<div class="pm-field">
 			<label class="pm-label">사진</label>
-			<%if(pet.getFilename() == null){ %>
+			<%if(pet == null || pet.getFilename() == null){ %>
 				<img class="pm-media" src="<c:url value='/images/logo_transparent.png' />" style="width:200px; height:200px;"/>
 			<%}else{ %>
 				<img class="pm-media" src="<c:url value='/image?file=${pet.filename}'/>" style="width:200px; height:200px;" />
